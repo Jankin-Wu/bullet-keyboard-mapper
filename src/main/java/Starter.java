@@ -1,5 +1,3 @@
-package starter;
-
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import config.BasicConfig;
