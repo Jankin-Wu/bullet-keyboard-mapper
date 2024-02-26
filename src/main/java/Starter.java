@@ -5,6 +5,7 @@ import jakarta.websocket.ContainerProvider;
 import jakarta.websocket.DeploymentException;
 import jakarta.websocket.WebSocketContainer;
 import listener.WebsocketListener;
+import lombok.extern.slf4j.Slf4j;
 import request.ProjectRequest;
 import utils.ConfigUtils;
 
@@ -20,19 +21,24 @@ import java.util.Objects;
  * @description 启动器
  * @date 2024/2/25 13:09
  */
+@Slf4j
 public class Starter {
 
     public static BasicConfig basicConfig;
 
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException, InvalidKeyException, URISyntaxException, DeploymentException {
-        basicConfig = ConfigUtils.getConfig("config.yml", BasicConfig.class);
+        basicConfig = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
         if (Objects.isNull(basicConfig)) {
             throw new RuntimeException("读取不到配置");
         }
         ProjectRequest p = new ProjectRequest(basicConfig.getAppId(), basicConfig.getAccessKey(), basicConfig.getAccessSecret());
         //获取弹幕服务信息
         String result = p.start(basicConfig.getIdCode());
+        log.info("弹幕服务器信息：{}", result);
         JSONObject data = JSONObject.parseObject(result).getJSONObject("data");
+        if (Objects.isNull(data)) {
+            throw new RuntimeException("服务器返回数据为空");
+        }
         //个人信息
         JSONObject anchorInfo = data.getJSONObject("anchor_info");
         //弹幕服务器信息

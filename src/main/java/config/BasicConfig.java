@@ -16,5 +16,5 @@ public class BasicConfig {
 
     private String accessSecret;
 
-    private int appId;
+    private Long appId;
 }

@@ -1,5 +1,6 @@
 package listener;
 
+import handler.DanMuHandler;
 import jakarta.websocket.*;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -10,23 +11,28 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import cn.hutool.core.util.ZipUtil;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author jankinwu
  * @description 监听弹幕
  * @date 2024/2/25 13:05
  */
+@Slf4j
 @ClientEndpoint
 public class WebsocketListener {
     private Session session;
     private String authBody;
+
+    private static DanMuHandler handler;
 
     public WebsocketListener(String authBody) {
         this.authBody = authBody;
     }
     @OnOpen
     public void onOpen(Session session) throws IOException {
-        System.out.println("已连接服务...");
+        log.info("已连接服务...");
+        this.handler = new DanMuHandler();
         this.session = session;
         RemoteEndpoint.Async remote = session.getAsyncRemote();
         //鉴权协议包
@@ -53,12 +59,12 @@ public class WebsocketListener {
 
     @OnClose
     public void onClose(Session session, CloseReason closeReason) {
-        System.out.println("关闭Websocket服务: " + closeReason);
+        log.info("关闭Websocket服务: " + closeReason);
     }
 
     @OnError
     public void onError(Session session, Throwable t) {
-        System.out.println("Websocket服务异常: " + t.getMessage());
+        log.info("Websocket服务异常: " + t.getMessage());
     }
 
     public interface Opt{
@@ -128,7 +134,7 @@ public class WebsocketListener {
         int optCode = byteBuffer.getInt();
         int sequence = byteBuffer.getInt();
         if(Opt.HEARTBEAT_REPLY == optCode){
-            System.out.println("这是服务器心跳回复");
+            log.info("这是服务器心跳回复");
         }
         byte[] contentBytes = new byte[packageLen - headLength];
         byteBuffer.get(contentBytes);
@@ -141,13 +147,13 @@ public class WebsocketListener {
         String content = new String(contentBytes, StandardCharsets.UTF_8);
         if(Opt.AUTH_REPLY == optCode){
             //返回{"code":0}表示成功
-            System.out.println("这是鉴权回复："+content);
+            log.info("这是鉴权回复："+content);
         }
         //真正的弹幕消息
         if(Opt.SEND_SMS_REPLY == optCode){
-            System.out.println("真正的弹幕消息："+content);
+//            log.info("真正的弹幕消息："+content);
             // todo 自定义处理
-
+            handler.handleDanMu(content);
         }
         //只存在ZIP包解压时才有的情况
         //如果byteBuffer游标 小于 byteBuffer大小，那就证明还有数据

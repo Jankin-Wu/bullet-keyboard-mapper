@@ -1,0 +1,71 @@
+package utils;
+
+import lombok.extern.slf4j.Slf4j;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.util.Scanner;
+
+/**
+ * @author wwg
+ * @description
+ * @date 2024/2/25 16:46
+ */
+@Slf4j
+public class KeyboardSimulationUtils {
+
+//    public static void main(String[] args) throws Exception {
+//        // 创建Robot对象
+//        Robot robot = new Robot();
+//
+//        // 模拟按下和释放键盘上的某个按键
+//        robot.keyPress(KeyEvent.VK_A);
+//        robot.keyRelease(KeyEvent.VK_A);
+//
+//        // 等待一段时间
+//        Thread.sleep(1000);
+//
+//        // 模拟按下和释放组合键 Ctrl+C
+//        robot.keyPress(KeyEvent.VK_CONTROL);
+//        robot.keyPress(KeyEvent.VK_C);
+//        robot.keyRelease(KeyEvent.VK_C);
+//        robot.keyRelease(KeyEvent.VK_CONTROL);
+//        Thread.sleep(1000);
+//        robot.keyPress(KeyEvent.VK_CONTROL);
+//        robot.keyPress(KeyEvent.VK_V);
+//    }
+
+    public static void pressAndRelease(char character) {
+        // 转换为大写字符以便处理
+        character = Character.toUpperCase(character);
+
+        // 检查输入是否为有效的字母（A-Z）或数字（0-9）
+        if ((character < 'A' || character > 'Z') && (character < '0' || character > '9')) {
+            log.info("传入的参数不是有效的字母或数字！");
+            return;
+        }
+
+        int keyCode;
+
+        if (Character.isLetter(character)) {
+            // 计算字母按键的ASCII码值（'A'对应65，以此类推）
+            keyCode = character - 'A' + KeyEvent.VK_A;
+        } else {
+            // 计算数字按键的ASCII码值（'0'对应48，以此类推）
+            keyCode = character - '0' + KeyEvent.VK_0;
+        }
+
+        try {
+            // 创建一个Robot对象实例
+            Robot robot = new Robot();
+
+            // 模拟按下按键
+            robot.keyPress(keyCode);
+
+            // 释放按键
+            robot.keyRelease(keyCode);
+        } catch (AWTException e) {
+            log.info("无法创建或使用Robot对象：" + e.getMessage());
+        }
+    }
+}

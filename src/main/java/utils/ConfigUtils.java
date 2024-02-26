@@ -1,6 +1,7 @@
 package utils;
 
 import config.BasicConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
@@ -11,6 +12,7 @@ import java.util.Map;
  * @description 配置解析工具类
  * @date 2024/2/25 13:19
  */
+@Slf4j
 public class ConfigUtils {
 
     public static <T> T getConfig(String fileName, Class<T> entityClass) {
@@ -54,10 +56,10 @@ public class ConfigUtils {
 
     public static void main(String[] args) {
         // 示例：将配置映射到实体类
-        BasicConfig config = ConfigUtils.getConfig("config.yml", BasicConfig.class);
+        BasicConfig config = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
         if (config != null) {
-            System.out.println("Name: " + config.getAppId());
-            System.out.println("Version: " + config.getIdCode());
+            log.info("Name: " + config.getAppId());
+            log.info("Version: " + config.getIdCode());
             // 可以进一步处理其他属性
         }
     }

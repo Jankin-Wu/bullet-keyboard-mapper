@@ -30,7 +30,7 @@ public class ProjectRequest {
     /**
      * 项目ID
      */
-    private long appId;
+    private Long appId;
     /**
      * 身份验证Key
      */
@@ -40,7 +40,7 @@ public class ProjectRequest {
      */
     private String accessSecret;
 
-    public ProjectRequest(long appId, String accessKey, String accessSecret) {
+    public ProjectRequest(Long appId, String accessKey, String accessSecret) {
         this.appId = appId;
         this.accessKey = accessKey;
         this.accessSecret = accessSecret;
