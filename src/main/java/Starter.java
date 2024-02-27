@@ -34,7 +34,7 @@ public class Starter {
         ProjectRequest p = new ProjectRequest(basicConfig.getAppId(), basicConfig.getAccessKey(), basicConfig.getAccessSecret());
         //获取弹幕服务信息
         String result = p.start(basicConfig.getIdCode());
-        log.info("弹幕服务器信息：{}", result);
+        log.info("弹幕服务信息：{}", result);
         JSONObject data = JSONObject.parseObject(result).getJSONObject("data");
         if (Objects.isNull(data)) {
             throw new RuntimeException("服务器返回数据为空");

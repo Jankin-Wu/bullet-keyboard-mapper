@@ -14,27 +14,6 @@ import java.util.Scanner;
 @Slf4j
 public class KeyboardSimulationUtils {
 
-//    public static void main(String[] args) throws Exception {
-//        // 创建Robot对象
-//        Robot robot = new Robot();
-//
-//        // 模拟按下和释放键盘上的某个按键
-//        robot.keyPress(KeyEvent.VK_A);
-//        robot.keyRelease(KeyEvent.VK_A);
-//
-//        // 等待一段时间
-//        Thread.sleep(1000);
-//
-//        // 模拟按下和释放组合键 Ctrl+C
-//        robot.keyPress(KeyEvent.VK_CONTROL);
-//        robot.keyPress(KeyEvent.VK_C);
-//        robot.keyRelease(KeyEvent.VK_C);
-//        robot.keyRelease(KeyEvent.VK_CONTROL);
-//        Thread.sleep(1000);
-//        robot.keyPress(KeyEvent.VK_CONTROL);
-//        robot.keyPress(KeyEvent.VK_V);
-//    }
-
     public static void pressAndRelease(char character) {
         // 转换为大写字符以便处理
         character = Character.toUpperCase(character);
