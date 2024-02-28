@@ -9,5 +9,5 @@
 ## 使用方式
 
 ``` shell
- java -jar BulletKeyboardMapper-1.0.jar
+ java -jar bullet-keyboard-mapper-1.0.jar
 ```
