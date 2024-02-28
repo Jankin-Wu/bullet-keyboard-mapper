@@ -71,14 +71,7 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"java.beans.PropertyVetoException"
-},
-{
   "name":"java.beans.Transient"
-},
-{
-  "name":"java.lang.Object",
-  "queryAllPublicMethods":true
 },
 {
   "name":"java.lang.String",
@@ -97,10 +90,6 @@
 {
   "name":"java.lang.StringCoding",
   "methods":[{"name":"hasNegatives","parameterTypes":["byte[]","int","int"] }]
-},
-{
-  "name":"java.lang.Thread",
-  "methods":[{"name":"getContextClassLoader","parameterTypes":[] }]
 },
 {
   "name":"java.lang.invoke.MethodHandles$Lookup",
@@ -186,68 +175,8 @@
   ]
 },
 {
-  "name":"org.apache.log4j.Appender"
-},
-{
-  "name":"org.apache.log4j.AppenderSkeleton",
-  "queryAllPublicMethods":true,
-  "methods":[{"name":"setThreshold","parameterTypes":["org.apache.log4j.Priority"] }]
-},
-{
-  "name":"org.apache.log4j.Category"
-},
-{
-  "name":"org.apache.log4j.ConsoleAppender",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setTarget","parameterTypes":["java.lang.String"] }
-  ]
-},
-{
-  "name":"org.apache.log4j.DailyRollingFileAppender",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setDatePattern","parameterTypes":["java.lang.String"] }
-  ]
-},
-{
-  "name":"org.apache.log4j.FileAppender",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"setAppend","parameterTypes":["boolean"] }, 
-    {"name":"setFile","parameterTypes":["java.lang.String"] }
-  ]
-},
-{
-  "name":"org.apache.log4j.Layout",
-  "queryAllPublicMethods":true
-},
-{
-  "name":"org.apache.log4j.Logger"
-},
-{
-  "name":"org.apache.log4j.PatternLayout",
-  "queryAllPublicMethods":true,
-  "methods":[
-    {"name":"<init>","parameterTypes":[] }, 
-    {"name":"setConversionPattern","parameterTypes":["java.lang.String"] }
-  ]
-},
-{
-  "name":"org.apache.log4j.Priority"
-},
-{
-  "name":"org.apache.log4j.WriterAppender",
-  "queryAllPublicMethods":true,
-  "methods":[{"name":"setEncoding","parameterTypes":["java.lang.String"] }]
-},
-{
-  "name":"org.apache.log4j.helpers.Loader"
-},
-{
-  "name":"org.apache.log4j.spi.OptionHandler"
+  "name":"sun.java2d.marlin.DMarlinRenderingEngine",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"sun.misc.Unsafe",

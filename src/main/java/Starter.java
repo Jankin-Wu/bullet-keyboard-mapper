@@ -8,8 +8,7 @@ import service.BulletService;
 public class Starter {
     public static void main(String[] args) {
         init();
-        BulletService service = new BulletService();
-        service.requestServer();
+        BulletService.requestServer();
     }
 
     private static void init() {

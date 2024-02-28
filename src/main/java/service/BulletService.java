@@ -7,7 +7,6 @@ import config.BasicConfig;
 import jakarta.websocket.ContainerProvider;
 import jakarta.websocket.WebSocketContainer;
 import listener.WebsocketListener;
-import lombok.extern.slf4j.Slf4j;
 import request.ProjectRequest;
 import utils.ConfigUtils;
 
@@ -19,12 +18,11 @@ import java.util.Objects;
  * @description 弹幕服务
  * @date 2024/2/28 1:26
  */
-@Slf4j
 public class BulletService {
 
     public static BasicConfig basicConfig;
 
-    public void requestServer() {
+    public static void requestServer() {
         try {
             basicConfig = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
             if (Objects.isNull(basicConfig)) {

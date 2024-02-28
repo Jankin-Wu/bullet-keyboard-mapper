@@ -1,7 +1,5 @@
 package utils;
 
-import config.BasicConfig;
-import lombok.extern.slf4j.Slf4j;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
@@ -12,7 +10,6 @@ import java.util.Map;
  * @description 配置解析工具类
  * @date 2024/2/25 13:19
  */
-@Slf4j
 public class ConfigUtils {
 
     public static <T> T getConfig(String fileName, Class<T> entityClass) {

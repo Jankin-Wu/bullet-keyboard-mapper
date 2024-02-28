@@ -9,12 +9,6 @@
     }, 
     {
       "pattern":"\\Qconfig-dev.yml\\E"
-    }, 
-    {
-      "pattern":"\\Qlog4j.properties\\E"
-    }, 
-    {
-      "pattern":"\\Qorg/slf4j/impl/StaticLoggerBinder.class\\E"
     }
   ]},
   "bundles":[
@@ -33,6 +27,13 @@
     {
       "name":"org.apache.tomcat.websocket.pojo.LocalStrings",
       "locales":[""]
+    }, 
+    {
+      "name":"sun.awt.resources.awt",
+      "classNames":[
+        "sun.awt.resources.awt", 
+        "sun.awt.resources.awt_zh_CN"
+      ]
     }
   ]
 }

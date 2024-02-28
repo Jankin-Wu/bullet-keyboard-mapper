@@ -4,7 +4,6 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ZipUtil;
 import handler.DanMuHandler;
 import jakarta.websocket.*;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -20,7 +19,6 @@ import java.util.concurrent.TimeUnit;
  * @description 监听弹幕
  * @date 2024/2/25 13:05
  */
-@Slf4j
 @ClientEndpoint
 public class WebsocketListener {
     private Session session;
@@ -156,7 +154,12 @@ public class WebsocketListener {
         if(Opt.SEND_SMS_REPLY == optCode){
 //            log.info("真正的弹幕消息："+content);
             // todo 自定义处理
-            handler.handleDanMu(content);
+            try {
+                handler.handleDanMu(content);
+            } catch (Exception e) {
+                System.out.println("弹幕处理异常");
+                e.printStackTrace();
+            }
         }
         //只存在ZIP包解压时才有的情况
         //如果byteBuffer游标 小于 byteBuffer大小，那就证明还有数据

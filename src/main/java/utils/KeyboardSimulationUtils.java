@@ -1,17 +1,13 @@
 package utils;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.Scanner;
 
 /**
  * @author wwg
  * @description
  * @date 2024/2/25 16:46
  */
-@Slf4j
 public class KeyboardSimulationUtils {
 
     public static void pressAndRelease(char character) {
@@ -20,7 +16,7 @@ public class KeyboardSimulationUtils {
 
         // 检查输入是否为有效的字母（A-Z）或数字（0-9）
         if ((character < 'A' || character > 'Z') && (character < '0' || character > '9')) {
-            log.info("传入的参数不是有效的字母或数字！");
+            System.out.println("传入的参数不是有效的字母或数字！");
             return;
         }
 
@@ -44,7 +40,7 @@ public class KeyboardSimulationUtils {
             // 释放按键
             robot.keyRelease(keyCode);
         } catch (AWTException e) {
-            log.info("无法创建或使用Robot对象：" + e.getMessage());
+            System.out.println("无法创建或使用Robot对象：" + e.getMessage());
         }
     }
 }

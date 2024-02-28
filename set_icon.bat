@@ -1,0 +1,1 @@
+rcedit-x64.exe .\target\BulletKeyboardMapper.exe --set-icon .\src\main\resources\img\icon2.ico
