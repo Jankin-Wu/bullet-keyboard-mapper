@@ -54,13 +54,13 @@ public class ConfigUtils {
         }
     }
 
-    public static void main(String[] args) {
-        // 示例：将配置映射到实体类
-        BasicConfig config = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
-        if (config != null) {
-            log.info("Name: " + config.getAppId());
-            log.info("Version: " + config.getIdCode());
-            // 可以进一步处理其他属性
-        }
-    }
+//    public static void main(String[] args) {
+//        // 示例：将配置映射到实体类
+//        BasicConfig config = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
+//        if (config != null) {
+//            log.info("Name: " + config.getAppId());
+//            log.info("Version: " + config.getIdCode());
+//            // 可以进一步处理其他属性
+//        }
+//    }
 }

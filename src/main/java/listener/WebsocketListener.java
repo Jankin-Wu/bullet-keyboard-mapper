@@ -1,7 +1,11 @@
 package listener;
 
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.ZipUtil;
 import handler.DanMuHandler;
 import jakarta.websocket.*;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -10,8 +14,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import cn.hutool.core.util.ZipUtil;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author jankinwu
@@ -31,7 +33,8 @@ public class WebsocketListener {
     }
     @OnOpen
     public void onOpen(Session session) throws IOException {
-        log.info("已连接服务...");
+        System.out.println(DateUtil.now() + " 已连接服务...");
+//        log.info("已连接服务...");
         this.handler = new DanMuHandler();
         this.session = session;
         RemoteEndpoint.Async remote = session.getAsyncRemote();
@@ -59,12 +62,12 @@ public class WebsocketListener {
 
     @OnClose
     public void onClose(Session session, CloseReason closeReason) {
-        log.info("关闭Websocket服务: " + closeReason);
+        System.out.println(DateUtil.now() + " 关闭Websocket服务: " + closeReason);
     }
 
     @OnError
     public void onError(Session session, Throwable t) {
-        log.info("Websocket服务异常: " + t.getMessage());
+        System.out.println(DateUtil.now() + " Websocket服务异常: " + t.getMessage());
     }
 
     public interface Opt{
@@ -134,7 +137,7 @@ public class WebsocketListener {
         int optCode = byteBuffer.getInt();
         int sequence = byteBuffer.getInt();
         if(Opt.HEARTBEAT_REPLY == optCode){
-            log.info("这是服务器心跳回复");
+            System.out.println(DateUtil.now() + " 这是服务器心跳回复");
         }
         byte[] contentBytes = new byte[packageLen - headLength];
         byteBuffer.get(contentBytes);
@@ -147,7 +150,7 @@ public class WebsocketListener {
         String content = new String(contentBytes, StandardCharsets.UTF_8);
         if(Opt.AUTH_REPLY == optCode){
             //返回{"code":0}表示成功
-            log.info("这是鉴权回复："+content);
+            System.out.println(DateUtil.now() + " 这是鉴权回复："+content);
         }
         //真正的弹幕消息
         if(Opt.SEND_SMS_REPLY == optCode){
