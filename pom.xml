@@ -106,7 +106,7 @@
                 </executions>
                 <configuration>
                     <skip>false</skip>
-                    <imageName>bullet-key-mapper</imageName>
+                    <imageName>BulletKeyboardMapper</imageName>
                     <mainClass>Starter</mainClass>
                     <buildArgs>
                         --no-fallback
