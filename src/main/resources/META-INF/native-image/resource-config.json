@@ -9,6 +9,9 @@
     }, 
     {
       "pattern":"\\Qconfig-dev.yml\\E"
+    }, 
+    {
+      "pattern":"\\QkeyMapping.json\\E"
     }
   ]},
   "bundles":[
