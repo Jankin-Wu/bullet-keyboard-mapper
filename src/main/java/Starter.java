@@ -1,5 +1,7 @@
 import config.BasicConfig;
-import service.BulletService;
+import dialog.ErrorDialog;
+import handler.ConfigHandler;
+import service.BulletServerService;
 import utils.ConfigUtils;
 
 /**
@@ -11,13 +13,21 @@ public class Starter {
 
     public static BasicConfig basicConfig;
     public static void main(String[] args) {
-        init();
-        BulletService.requestServer(basicConfig);
+        try {
+            init();
+            BulletServerService.requestServer(basicConfig);
+        } catch (Exception e) {
+            ErrorDialog.displayErrorMessage(e.getMessage());
+            // 在点击对话框确定按钮后退出应用程序
+            System.exit(1);
+        }
     }
 
     private static void init() {
+        System.setProperty("java.home", ".");
         // 读取配置文件
         basicConfig = ConfigUtils.getConfig("./config.yml", BasicConfig.class);
+        ConfigHandler.verifyConfig(basicConfig);
 //        Log4jConfig.configureConsoleAppender();
     }
 

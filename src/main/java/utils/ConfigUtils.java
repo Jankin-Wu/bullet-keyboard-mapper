@@ -27,6 +27,7 @@ public class ConfigUtils {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            throw new RuntimeException("配置文件解析失败" + e.getMessage());
         }
         return null;
     }

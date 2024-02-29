@@ -8,7 +8,6 @@ import jakarta.websocket.ContainerProvider;
 import jakarta.websocket.WebSocketContainer;
 import listener.WebsocketListener;
 import request.ProjectRequest;
-import utils.ConfigUtils;
 
 import java.net.URI;
 import java.util.Objects;
@@ -18,7 +17,7 @@ import java.util.Objects;
  * @description 弹幕服务
  * @date 2024/2/28 1:26
  */
-public class BulletService {
+public class BulletServerService {
 
 //    public static BasicConfig basicConfig;
 
