@@ -84,19 +84,6 @@
             <version>${graalvm.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- JNA -->
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna</artifactId>
-            <version>5.8.0</version>
-        </dependency>
-
-        <!-- JNA Platform -->
-        <dependency>
-            <groupId>net.java.dev.jna</groupId>
-            <artifactId>jna-platform</artifactId>
-            <version>5.8.0</version>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
