@@ -6,8 +6,14 @@
 ### 本地可执行文件
 `feature-native`分支基于 GraalVM Native Image 技术开发，支持编译为原生可执行文件，不依赖 Java 运行环境即可运行。
 
+### 配置文件
++ `config.yml`：账户信息和功能配置文件
++ `keyMapping.json`：弹幕内容和键位的映射关系，其中`msg`为弹幕内容，`key`为触发键位。
+
 ## 使用方式
+
 ### Jar 版
+配置`resources`目录下的`config.yml`文件后执行：
 ``` shell
  java -jar bullet-keyboard-mapper-1.0.jar
 ```
