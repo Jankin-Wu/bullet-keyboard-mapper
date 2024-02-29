@@ -1,6 +1,9 @@
-import service.BulletService;
-
-import java.io.IOException;
+import config.BasicConfig;
+import config.GlobalConfigHolder;
+import dialog.ErrorDialog;
+import handler.ConfigHandler;
+import service.BulletServerService;
+import utils.ConfigUtils;
 
 /**
  * @author jankinwu
@@ -8,22 +11,25 @@ import java.io.IOException;
  * @date 2024/2/25 13:09
  */
 public class Starter {
+
+    public static BasicConfig basicConfig;
     public static void main(String[] args) {
-        init();
-        BulletService service = new BulletService();
-        service.requestServer();
+        try {
+            init();
+            BulletServerService.requestServer(basicConfig);
+        } catch (Exception e) {
+            ErrorDialog.displayErrorMessage(e.getMessage());
+            // 在点击对话框确定按钮后退出应用程序
+            System.exit(1);
+        }
     }
 
     private static void init() {
-        // 执行前修改终端输出日志编码
-//        ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", "chcp 65001");
-        // 将子进程的输入/输出与当前进程绑定
-//        processBuilder.inheritIO();
-//        try {
-//            processBuilder.start();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        // 读取配置文件
+        basicConfig = GlobalConfigHolder.getBasicConfig();
+//        basicConfig = ConfigUtils.getConfig("./config-dev.yml", BasicConfig.class);
+        // 校验配置参数
+        ConfigHandler.verifyConfig(basicConfig);
 //        Log4jConfig.configureConsoleAppender();
     }
 

@@ -6,6 +6,7 @@ import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
+import config.GlobalConfigHolder;
 import enums.KeyMappingEnum;
 import utils.KeyboardSimulationUtils;
 
@@ -39,7 +40,10 @@ public class DanMuHandler {
         String msg = data.getString("msg");
         String uname = data.getString("uname");
         System.out.println(DateUtil.now() + " [弹幕] " + uname + "：" + msg);
-        String key = map.get(msg.toUpperCase(Locale.ROOT));
+        if (GlobalConfigHolder.getBasicConfig().getIgnoreCase()) {
+            msg = msg.toUpperCase(Locale.ROOT);
+        }
+        String key = map.get(msg);
         if (StrUtil.isNotBlank(key)) {
             Integer eventCode = KeyMappingEnum.getEventCode(key);
             if (Objects.nonNull(eventCode)) {

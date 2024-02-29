@@ -6,3 +6,5 @@ accessKey: ""
 accessSecret: ""
 # 项目Id（13位数字）
 appId:
+# 弹幕内容映射为按键时是否忽略大小写（默认忽略大小写）
+ignoreCase: true

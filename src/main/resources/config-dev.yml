@@ -1,8 +1,10 @@
 # 身份码
-idCode: ""
+idCode: "DDRU0IKUE22O5"
 # access_key
-accessKey: ""
+accessKey: "uxq5IUpnzTs3fEwPFEowRFps"
 # access_secret
-accessSecret: ""
+accessSecret: "o6eQhMaXOqAYW7JPe0Emt6uNeyViWv"
 # 项目Id（13位数字）
-appId:
+appId: 1709262728931
+# 弹幕内容映射为按键时是否忽略大小写（默认忽略大小写）
+ignoreCase: true
