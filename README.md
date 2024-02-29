@@ -11,3 +11,5 @@
 ``` shell
  java -jar bullet-keyboard-mapper-1.0.jar
 ```
+### Native 版
+解压后配置`config.yml`即可开始使用
