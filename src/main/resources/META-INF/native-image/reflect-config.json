@@ -139,6 +139,9 @@
       },
       {
         "name": "idCode"
+      },
+      {
+        "name": "ignoreCase"
       }
     ],
     "methods": [

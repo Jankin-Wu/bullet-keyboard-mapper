@@ -17,4 +17,6 @@ public class BasicConfig {
     private String accessSecret;
 
     private Long appId;
+
+    private Boolean ignoreCase = true;
 }

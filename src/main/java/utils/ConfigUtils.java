@@ -5,6 +5,7 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author jankinwu
@@ -51,7 +52,9 @@ public class ConfigUtils {
         try {
             java.lang.reflect.Field field = instance.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
-            field.set(instance, fieldValue);
+            if (Objects.nonNull(fieldValue)) {
+                field.set(instance, fieldValue);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

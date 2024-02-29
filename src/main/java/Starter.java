@@ -1,4 +1,5 @@
 import config.BasicConfig;
+import config.GlobalConfigHolder;
 import dialog.ErrorDialog;
 import handler.ConfigHandler;
 import service.BulletServerService;
@@ -26,7 +27,9 @@ public class Starter {
     private static void init() {
         System.setProperty("java.home", ".");
         // 读取配置文件
-        basicConfig = ConfigUtils.getConfig("./config.yml", BasicConfig.class);
+        basicConfig = GlobalConfigHolder.getBasicConfig();
+//        basicConfig = ConfigUtils.getConfig("./config-dev.yml", BasicConfig.class);
+        // 校验配置参数
         ConfigHandler.verifyConfig(basicConfig);
 //        Log4jConfig.configureConsoleAppender();
     }
