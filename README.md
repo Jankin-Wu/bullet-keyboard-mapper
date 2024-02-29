@@ -2,6 +2,7 @@
 基于 WebSocket 获取哔哩哔哩直播弹幕并映射为键盘指令
 
 ## 特性
+### 支持多条弹幕内容映射一个按键
 
 ### 本地可执行文件
 `feature-native`分支基于 GraalVM Native Image 技术开发，支持编译为原生可执行文件，不依赖 Java 运行环境即可运行。
