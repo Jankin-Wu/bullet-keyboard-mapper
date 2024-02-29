@@ -15,18 +15,32 @@
     {
       "name":"org.apache.tomcat.util.codec.binary.LocalStrings",
       "locales":[""]
-    }, 
+    },
     {
       "name":"org.apache.tomcat.util.threads.LocalStrings",
       "locales":[""]
-    }, 
+    },
     {
       "name":"org.apache.tomcat.websocket.LocalStrings",
       "locales":[""]
-    }, 
+    },
     {
       "name":"org.apache.tomcat.websocket.pojo.LocalStrings",
       "locales":[""]
+    },
+    {
+      "name":"com.sun.swing.internal.plaf.basic.resources.basic",
+      "classNames":[
+        "com.sun.swing.internal.plaf.basic.resources.basic", 
+        "com.sun.swing.internal.plaf.basic.resources.basic_zh_CN"
+      ]
+    }, 
+    {
+      "name":"com.sun.swing.internal.plaf.metal.resources.metal",
+      "classNames":[
+        "com.sun.swing.internal.plaf.metal.resources.metal", 
+        "com.sun.swing.internal.plaf.metal.resources.metal_zh_CN"
+      ]
     }, 
     {
       "name":"sun.awt.resources.awt",
