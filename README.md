@@ -4,10 +4,10 @@
 ## 特性
 
 ### 本地可执行文件
-支持 Native 方式打包为本地可执行文件，不依赖 JRE 独立运行
+`feature-native`分支基于 GraalVM Native Image 技术开发，支持编译为原生可执行文件，不依赖 Java 运行环境即可运行。
 
 ## 使用方式
-
+### Jar 版
 ``` shell
  java -jar bullet-keyboard-mapper-1.0.jar
 ```
