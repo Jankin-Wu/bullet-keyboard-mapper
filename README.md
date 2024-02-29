@@ -13,7 +13,12 @@
 ## 使用方式
 
 ### Jar 版
-配置`resources`目录下的`config.yml`文件后执行：
+配置`resources`目录下的`config.yml`文件后使用 Maven 打包：
+
+```shell
+man clean package
+```
+打包成功后运行 jar 包：
 ``` shell
  java -jar bullet-keyboard-mapper-1.0.jar
 ```
