@@ -20,11 +20,11 @@ import java.util.Objects;
  */
 public class BulletService {
 
-    public static BasicConfig basicConfig;
+//    public static BasicConfig basicConfig;
 
-    public static void requestServer() {
+    public static void requestServer(BasicConfig basicConfig) {
         try {
-            basicConfig = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
+//            BulletService.basicConfig = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
             if (Objects.isNull(basicConfig)) {
                 throw new RuntimeException("读取不到配置");
             }

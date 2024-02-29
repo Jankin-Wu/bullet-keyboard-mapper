@@ -6,10 +6,7 @@
     }, 
     {
       "pattern":"\\QMETA-INF/services/jakarta.websocket.server.ServerEndpointConfig$Configurator\\E"
-    }, 
-    {
-      "pattern":"\\Qconfig-dev.yml\\E"
-    }, 
+    },
     {
       "pattern":"\\QkeyMapping.json\\E"
     }

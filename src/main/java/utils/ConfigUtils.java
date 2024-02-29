@@ -2,6 +2,7 @@ package utils;
 
 import org.yaml.snakeyaml.Yaml;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Map;
 
@@ -14,11 +15,15 @@ public class ConfigUtils {
 
     public static <T> T getConfig(String fileName, Class<T> entityClass) {
         try {
-            InputStream inputStream = ConfigUtils.class.getClassLoader().getResourceAsStream(fileName);
-            if (inputStream != null) {
-                Yaml yaml = new Yaml();
-                Map<String, Object> data = yaml.load(inputStream);
-                return yamlToObject(data, entityClass);
+//            InputStream inputStream = ConfigUtils.class.getClassLoader().getResourceAsStream(fileName);
+            try (InputStream inputStream = new FileInputStream(fileName)) {
+                if (inputStream != null) {
+                    Yaml yaml = new Yaml();
+                    Map<String, Object> data = yaml.load(inputStream);
+                    return yamlToObject(data, entityClass);
+                } else {
+                    System.out.println("解析配置文件异常");
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
