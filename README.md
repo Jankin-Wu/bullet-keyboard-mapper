@@ -1,4 +1,4 @@
-# BulletKeyboardMapper
+# Bullet Keyboard Mapper
 基于 WebSocket 获取哔哩哔哩直播弹幕并映射为键盘指令
 
 ## 特性
