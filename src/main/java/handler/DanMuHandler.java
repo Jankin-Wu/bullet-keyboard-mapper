@@ -2,9 +2,11 @@ package handler;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
+import enums.KeyMappingEnum;
 import utils.KeyboardSimulationUtils;
 
 import java.io.File;
@@ -13,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -24,7 +27,7 @@ import java.util.Objects;
  */
 public class DanMuHandler {
 
-    private final Map<String, Character> map = new HashMap<>();
+    private final Map<String, String> map = new HashMap<>();
     private final String FILE_NAME = "keyMapping.json";
     private final String EXTERNAL_FILE_PATH = "./keyMapping.json";
 
@@ -36,11 +39,14 @@ public class DanMuHandler {
         String msg = data.getString("msg");
         String uname = data.getString("uname");
         System.out.println(DateUtil.now() + " [弹幕] " + uname + "：" + msg);
-        map.forEach((key, value) -> {
-            if (key.equals(msg)) {
-                KeyboardSimulationUtils.pressAndRelease(value);
+        String key = map.get(msg.toUpperCase(Locale.ROOT));
+        if (StrUtil.isNotBlank(key)) {
+            Integer eventCode = KeyMappingEnum.getEventCode(key);
+            if (Objects.nonNull(eventCode)) {
+                System.out.println(DateUtil.now() + " 模拟按键：" + key);
+                KeyboardSimulationUtils.pressAndRelease(eventCode);
             }
-        });
+        }
     }
 
     public void initMap() {
@@ -87,8 +93,8 @@ public class DanMuHandler {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             String msg = jsonObject.getString("msg");
             String key = jsonObject.getString("key");
-            if (msg != null && key != null && key.length() == 1) {
-                map.put(msg, key.charAt(0));
+            if (StrUtil.isNotBlank(msg) && StrUtil.isNotBlank(key)) {
+                map.put(msg, key);
             }
         }
         System.out.println(DateUtil.now() + " 按键映射加载完毕");

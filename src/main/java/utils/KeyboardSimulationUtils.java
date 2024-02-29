@@ -44,4 +44,19 @@ public class KeyboardSimulationUtils {
             System.out.println("无法创建或使用Robot对象：" + e.getMessage());
         }
     }
+
+    public static void pressAndRelease(int eventCode) {
+        try {
+            // 创建一个Robot对象实例
+            Robot robot = new Robot();
+
+            // 模拟按下按键
+            robot.keyPress(eventCode);
+
+            // 释放按键
+            robot.keyRelease(eventCode);
+        } catch (AWTException e) {
+            System.out.println("无法创建或使用Robot对象：" + e.getMessage());
+        }
+    }
 }
