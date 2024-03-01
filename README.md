@@ -24,7 +24,7 @@ man clean package
  java -jar bullet-keyboard-mapper-1.0.jar
 ```
 ### Native 版
-解压后配置`config.yml`即可开始使用，修改`config.yml`或`keyMapping.json`文件需要重启应用后才能生效
+解压`Bullet_Keyboard_Mapper.zip`后配置`config.yml`即可开始使用，修改`config.yml`或`keyMapping.json`文件需要重启应用后才能生效
 
 ## Native 分支打包步骤
 
