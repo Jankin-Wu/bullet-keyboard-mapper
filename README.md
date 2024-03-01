@@ -14,7 +14,7 @@
 ## 使用方式
 
 ### Jar 版
-配置`resources`目录下的`config.yml`文件后使用 Maven 打包：
+配置`master`分支`src/resources`目录下的`config.yml`文件后使用 Maven 打包：
 
 ```shell
 man clean package
