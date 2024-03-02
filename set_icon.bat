@@ -1,1 +1,1 @@
-rcedit-x64.exe ".\target\native-demo.exe" --set-icon .\src\main\resources\img\keyboard3.ico
+rcedit-x64.exe ".\target\Bullet Keyboard Mapper.exe" --set-icon .\src\main\resources\img\keyboard3.ico
