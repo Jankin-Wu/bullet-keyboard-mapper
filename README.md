@@ -2,7 +2,7 @@
 
 ## 简介
 
-+ 基于 WebSocket 获取哔哩哔哩直播弹幕并映射为键盘指令，可用于开发弹幕互动游戏
++ 基于 WebSocket 获取哔哩哔哩直播弹幕映射键位并通过 JNA 模拟为键盘输入指令，可用于开发弹幕互动游戏
 + `native-release-v1.0.0` 分支为使用 maven + GraalVM native image打包的版本，之后的版本使用 Spring Boot Native 进行重构，简化打包流程
 
 
@@ -13,7 +13,7 @@
 `feature-native`分支基于 GraalVM Native Image 技术开发，支持编译为原生可执行文件，不依赖 Java 运行环境即可运行。
 
 ### 配置文件
-+ `config.yml`：账户信息和功能配置文件
++ `application-release.yml`：账户信息和功能配置文件
 + `keyMapping.json`：弹幕内容和键位的映射关系，其中`msg`为弹幕内容，`key`为触发键位。
 
 ## 使用说明
@@ -27,7 +27,7 @@
 ## 打包方式
 
 ### Jar 包
-配置`resources`目录下的`application-release.yml`文件后使用 Maven 打包：
+配置`config`目录下的`application-release.yml`文件后使用 Maven 打包：
 
 ```shell
 man clean package
@@ -49,7 +49,7 @@ gu install native-image
 
 **打包**
 
-管理员权限运行 `x64 Native Tools Command Prompt for VS 2022`cd 到项目目录后执行：
+管理员权限运行 `x64 Native Tools Command Prompt for VS 2022` cd 到项目目录后执行：
 
 ```shell
 mvn native:compile -Pnative -Prelease
