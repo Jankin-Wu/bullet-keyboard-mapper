@@ -1,18 +1,24 @@
-package utils;
+package com.jankinwu.nativedemo.utils;
 
+
+import com.jankinwu.nativedemo.enums.KeyMappingAwtEnum;
+import com.jankinwu.nativedemo.hints.KeyboardSimuRuntimeHints;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.ImportRuntimeHints;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.Scanner;
+import java.util.Objects;
+
 
 /**
- * @author wwg
+ * @author jankinwu
  * @description
  * @date 2024/2/25 16:46
  */
 @Slf4j
-public class KeyboardSimulationUtils {
+@ImportRuntimeHints(KeyboardSimuRuntimeHints.class)
+public class KeyboardSimulationAwtUtils {
 
     public static void pressAndRelease(char character) {
         // 转换为大写字符以便处理
@@ -44,7 +50,7 @@ public class KeyboardSimulationUtils {
             // 释放按键
             robot.keyRelease(keyCode);
         } catch (AWTException e) {
-            log.info("无法创建或使用Robot对象：" + e.getMessage());
+            log.error("无法创建或使用Robot对象：" + e.getMessage());
         }
     }
 
@@ -52,14 +58,23 @@ public class KeyboardSimulationUtils {
         try {
             // 创建一个Robot对象实例
             Robot robot = new Robot();
-
+            log.info("Robot 对象创建成功");
             // 模拟按下按键
             robot.keyPress(eventCode);
 
             // 释放按键
             robot.keyRelease(eventCode);
         } catch (AWTException e) {
-            System.out.println("无法创建或使用Robot对象：" + e.getMessage());
+            e.printStackTrace();
+            log.error("无法创建或使用Robot对象：{}", e.getMessage());
+        }
+    }
+
+    public static void pressAndRelease(String keyName) {
+        Integer eventCode = KeyMappingAwtEnum.getEventCode(keyName);
+        if (Objects.nonNull(eventCode)) {
+            pressAndRelease(eventCode);
+            log.info("模拟按键：{}", keyName);
         }
     }
 }

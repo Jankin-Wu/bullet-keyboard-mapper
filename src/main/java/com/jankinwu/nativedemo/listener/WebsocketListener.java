@@ -1,7 +1,22 @@
-package listener;
+package com.jankinwu.nativedemo.listener;
 
-import handler.DanMuHandler;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.ZipUtil;
+import com.jankinwu.nativedemo.handler.DanMuHandler;
+import com.jankinwu.nativedemo.hints.WebsocketListenerRuntimeHints;
+import jakarta.annotation.Resource;
 import jakarta.websocket.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.aot.hint.ExecutableMode;
+import org.springframework.aot.hint.RuntimeHints;
+import org.springframework.aot.hint.RuntimeHintsRegistrar;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ImportRuntimeHints;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -10,8 +25,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import cn.hutool.core.util.ZipUtil;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author jankinwu
@@ -19,21 +32,21 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2024/2/25 13:05
  */
 @Slf4j
+@Service
 @ClientEndpoint
+@AllArgsConstructor
+@NoArgsConstructor
+@ImportRuntimeHints(WebsocketListenerRuntimeHints.class)
 public class WebsocketListener {
-    private Session session;
     private String authBody;
 
-    private static DanMuHandler handler;
+    private DanMuHandler handler;
 
-    public WebsocketListener(String authBody) {
-        this.authBody = authBody;
-    }
     @OnOpen
     public void onOpen(Session session) throws IOException {
+//        System.out.println(DateUtil.now() + " 已连接服务...");
         log.info("已连接服务...");
-        this.handler = new DanMuHandler();
-        this.session = session;
+//        this.handler = new DanMuHandler();
         RemoteEndpoint.Async remote = session.getAsyncRemote();
         //鉴权协议包
         ByteBuffer authPack = ByteBuffer.wrap(generateAuthPack(authBody));
@@ -59,6 +72,7 @@ public class WebsocketListener {
 
     @OnClose
     public void onClose(Session session, CloseReason closeReason) {
+//        System.out.println(DateUtil.now() + " 关闭Websocket服务: " + closeReason);
         log.info("关闭Websocket服务: " + closeReason);
     }
 
@@ -127,13 +141,14 @@ public class WebsocketListener {
      * @param byteBuffer
      * @return
      */
-    public static void unpack(ByteBuffer byteBuffer){
+    public void unpack(ByteBuffer byteBuffer){
         int packageLen = byteBuffer.getInt();
         short headLength = byteBuffer.getShort();
         short protVer = byteBuffer.getShort();
         int optCode = byteBuffer.getInt();
         int sequence = byteBuffer.getInt();
         if(Opt.HEARTBEAT_REPLY == optCode){
+//            System.out.println(DateUtil.now() + " 这是服务器心跳回复");
             log.info("这是服务器心跳回复");
         }
         byte[] contentBytes = new byte[packageLen - headLength];
@@ -153,7 +168,12 @@ public class WebsocketListener {
         if(Opt.SEND_SMS_REPLY == optCode){
 //            log.info("真正的弹幕消息："+content);
             // todo 自定义处理
-            handler.handleDanMu(content);
+            try {
+                handler.handleDanMu(content);
+            } catch (Exception e) {
+                log.info("弹幕处理异常");
+                e.printStackTrace();
+            }
         }
         //只存在ZIP包解压时才有的情况
         //如果byteBuffer游标 小于 byteBuffer大小，那就证明还有数据
@@ -161,6 +181,21 @@ public class WebsocketListener {
             unpack(byteBuffer);
         }
     }
+
+//    static class WebsocketListenerRuntimeHints implements RuntimeHintsRegistrar {
+//
+//        @Override
+//        public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
+//            try {
+//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onOpen", Session.class), ExecutableMode.INVOKE);
+//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onClose", Session.class, CloseReason.class), ExecutableMode.INVOKE);
+//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onError", Session.class, Throwable.class), ExecutableMode.INVOKE);
+//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onMessage", ByteBuffer.class), ExecutableMode.INVOKE);
+//            } catch (NoSuchMethodException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//    }
 }
 
 

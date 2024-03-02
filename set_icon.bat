@@ -1,0 +1,1 @@
+rcedit-x64.exe ".\target\native-demo.exe" --set-icon .\src\main\resources\img\keyboard3.ico

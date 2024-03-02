@@ -1,19 +1,25 @@
-package handler;
+package com.jankinwu.nativedemo.handler;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import config.GlobalConfigHolder;
-import enums.KeyMappingEnum;
-import utils.KeyboardSimulationUtils;
+import com.jankinwu.nativedemo.config.BasicConfig;
+import com.jankinwu.nativedemo.enums.KeySimMethodEnum;
+import com.jankinwu.nativedemo.hints.DanMuHandlerRuntimeHints;
+import com.jankinwu.nativedemo.hints.KeyboardSimuRuntimeHints;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ImportRuntimeHints;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Locale;
@@ -26,29 +32,34 @@ import java.util.Objects;
  * @description 弹幕处理器
  * @date 2024/2/26 23:34
  */
+@Slf4j
+@Component
+@ImportRuntimeHints({DanMuHandlerRuntimeHints.class, KeyboardSimuRuntimeHints.class})
 public class DanMuHandler {
 
     private final Map<String, String> map = new HashMap<>();
-    private final String FILE_NAME = "keyMapping.json";
-    private final String EXTERNAL_FILE_PATH = "./keyMapping.json";
+    public static final String FILE_NAME = "keyMapping.json";
 
+    @Autowired
+    private BasicConfig basicConfig;
 
-    public void handleDanMu(String content) {
+    public void handleDanMu(String content) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         initMap();
         JSONObject contentJson = JSONObject.parseObject(content);
         JSONObject data = contentJson.getJSONObject("data");
         String msg = data.getString("msg");
         String uname = data.getString("uname");
-        System.out.println(DateUtil.now() + " [弹幕] " + uname + "：" + msg);
-        if (GlobalConfigHolder.getBasicConfig().getIgnoreCase()) {
+        log.info("[弹幕] {}: {}", uname, msg);
+        if (basicConfig.getIgnoreCase()) {
             msg = msg.toUpperCase(Locale.ROOT);
         }
         String key = map.get(msg);
         if (StrUtil.isNotBlank(key)) {
-            Integer eventCode = KeyMappingEnum.getEventCode(key);
-            if (Objects.nonNull(eventCode)) {
-                System.out.println(DateUtil.now() + " 模拟按键：" + key);
-                KeyboardSimulationUtils.pressAndRelease(eventCode);
+            // 获取相应模拟键盘工具类并触发按键
+            Class<?> simUtils = KeySimMethodEnum.getSimUtils(basicConfig.getSimMethod());
+            if (Objects.nonNull(simUtils)) {
+                Method method = simUtils.getMethod("pressAndRelease", String.class);
+                method.invoke(null, key);
             }
         }
     }
@@ -62,36 +73,36 @@ public class DanMuHandler {
             if (CollUtil.isNotEmpty(map)) {
                 return;
             }
-            File externalFile = new File(EXTERNAL_FILE_PATH);
+            File externalFile = new File(basicConfig.getMappingFilePath());
             // 检查外部目录是否存在keyMapping.json文件，如果有就使用外部的映射文件
             if (externalFile.exists()) {
-                try (InputStream inputStream = new FileInputStream(EXTERNAL_FILE_PATH)) {
+                try (InputStream inputStream = new FileInputStream(externalFile)) {
                     readJson(inputStream);
                 } catch (Exception e) {
-                    System.out.println(DateUtil.now() + " 映射文件解析异常");
+                    log.info("映射文件解析异常");
                     e.printStackTrace();
                 }
             } else {
-                System.out.println("检测不到外部映射文件，开始加载内部默认映射文件。。。");
-                try (InputStream inputStream = DanMuHandler.class.getClassLoader().getResourceAsStream(FILE_NAME)) {
+                log.info("检测不到外部映射文件，开始加载内部默认映射文件。。。");
+                try (InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(FILE_NAME)) {
                     if (Objects.nonNull(inputStream)) {
                         readJson(inputStream);
                     }
                 } catch (Exception e) {
-                    System.out.println(DateUtil.now() + " 找不到映射文件");
+                    log.info("找不到映射文件");
                 }
             }
         }
     }
 
     private void readJson(InputStream inputStream) throws IOException {
-        System.out.println(DateUtil.now() + " 加载按键映射...");
+        log.info("加载按键映射...");
         byte[] bytes = inputStream.readAllBytes();
         String jsonString = new String(bytes, StandardCharsets.UTF_8);
 
         JSONArray jsonArray = JSON.parseArray(jsonString);
         if (jsonArray.size() <= 0) {
-            System.out.println(DateUtil.now() + " 按键映射读取失败");
+            log.info("按键映射读取失败");
         }
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -101,6 +112,6 @@ public class DanMuHandler {
                 map.put(msg, key);
             }
         }
-        System.out.println(DateUtil.now() + " 按键映射加载完毕");
+        log.info("按键映射加载完毕");
     }
 }

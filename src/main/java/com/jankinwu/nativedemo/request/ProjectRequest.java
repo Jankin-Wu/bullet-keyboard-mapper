@@ -1,8 +1,12 @@
-package request;
+package com.jankinwu.nativedemo.request;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import jakarta.annotation.Nonnull;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
+
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.BufferedReader;
@@ -26,6 +30,9 @@ import java.util.stream.Collectors;
  * @description 哔哩哔哩请求
  * @date 2024/2/25 0:43
  */
+@Service
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProjectRequest {
     /**
      * 项目ID
@@ -40,11 +47,11 @@ public class ProjectRequest {
      */
     private String accessSecret;
 
-    public ProjectRequest(Long appId, String accessKey, String accessSecret) {
-        this.appId = appId;
-        this.accessKey = accessKey;
-        this.accessSecret = accessSecret;
-    }
+//    public ProjectRequest(Long appId, String accessKey, String accessSecret) {
+//        this.appId = appId;
+//        this.accessKey = accessKey;
+//        this.accessSecret = accessSecret;
+//    }
 
     public final static String START_URL = "https://live-open.biliapi.com/v2/app/start";
     public final static String END_URL = "https://live-open.biliapi.com/v2/app/end";
