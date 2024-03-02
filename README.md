@@ -5,7 +5,7 @@
 + 基于 WebSocket 获取哔哩哔哩直播弹幕映射键位并通过 JNA 模拟为键盘输入指令，可用于开发弹幕互动游戏
 + `native-release-v1.0.0` 分支为使用 maven + GraalVM native image 打包的版本，之后的版本使用 Spring Boot Native 进行重构，简化打包流程
 
-<img alt="界面展示" src=".\src\main\resources\img\interface.png" title="界面展示"/>
+<img alt="界面展示" src="http://oss.jankinwu.com/img/Snipaste_2024-03-03_01-14-58.png" title="界面展示"/>
 <p style="text-align: center;">运行效果</p>
 
 ## 特性
