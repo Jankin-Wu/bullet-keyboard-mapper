@@ -35,7 +35,7 @@ public class BulletServerService {
     private final ConfigHandler configHandler;
 
     @PostConstruct
-    public void requestServer() {
+    public void run() {
         try {
 //            BulletService.basicConfig = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
             if (Objects.isNull(basicConfig)) {
@@ -46,7 +46,7 @@ public class BulletServerService {
             //获取弹幕服务信息
             String result = p.start(basicConfig.getIdCode());
 //            log.info("弹幕服务信息：{}", result);
-            log.info(DateUtil.now() + " 弹幕服务信息：" + result);
+            log.info("弹幕服务信息：" + result);
             JSONObject data = JSONObject.parseObject(result).getJSONObject("data");
             if (Objects.isNull(data)) {
                 throw new RuntimeException(Objects.requireNonNull(JSONObject.parseObject(result)).getString("message"));
@@ -66,7 +66,7 @@ public class BulletServerService {
             container.connectToServer(new WebsocketListener(authBody, handler), new URI(uri));
         } catch (Exception e) {
 //            ErrorDialog.displayErrorMessage(e.getMessage());
-            log.error("运行异常：", e);
+            log.error("运行异常：{}", e.getMessage());
             // 在点击对话框确定按钮后退出应用程序
 //            System.exit(1);
         }

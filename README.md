@@ -3,14 +3,16 @@
 ## 简介
 
 + 基于 WebSocket 获取哔哩哔哩直播弹幕映射键位并通过 JNA 模拟为键盘输入指令，可用于开发弹幕互动游戏
-+ `native-release-v1.0.0` 分支为使用 maven + GraalVM native image打包的版本，之后的版本使用 Spring Boot Native 进行重构，简化打包流程
++ `native-release-v1.0.0` 分支为使用 maven + GraalVM native image 打包的版本，之后的版本使用 Spring Boot Native 进行重构，简化打包流程
 
+<img alt="界面展示" src=".\src\main\resources\img\interface.png" title="界面展示"/>
+<p style="text-align: center;">运行效果</p>
 
 ## 特性
 ### 支持多条弹幕内容映射一个按键
 
 ### 本地可执行文件
-`feature-native`分支基于 GraalVM Native Image 技术开发，支持编译为原生可执行文件，不依赖 Java 运行环境即可运行。
+基于 Spring Boot Native 技术开发，支持编译为原生可执行文件，不依赖 Java 运行环境即可运行。
 
 ### 配置文件
 + `application-release.yml`：账户信息和功能配置文件
@@ -23,6 +25,7 @@
 
 **release-v1.0.0 之后版本**
 
+解压`Bullet_Keyboard_Mapper.zip`后配置`application-release.yml`即可开始使用，修改`application-release.yml`或`keyMapping.json`文件需要重启应用后才能生效
 
 ## 打包方式
 
