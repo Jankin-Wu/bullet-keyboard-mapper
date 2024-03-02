@@ -1,0 +1,201 @@
+package com.jankinwu.nativedemo.listener;
+
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.ZipUtil;
+import com.jankinwu.nativedemo.handler.DanMuHandler;
+import com.jankinwu.nativedemo.hints.WebsocketListenerRuntimeHints;
+import jakarta.annotation.Resource;
+import jakarta.websocket.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.aot.hint.ExecutableMode;
+import org.springframework.aot.hint.RuntimeHints;
+import org.springframework.aot.hint.RuntimeHintsRegistrar;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ImportRuntimeHints;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * @author jankinwu
+ * @description 监听弹幕
+ * @date 2024/2/25 13:05
+ */
+@Slf4j
+@Service
+@ClientEndpoint
+@AllArgsConstructor
+@NoArgsConstructor
+@ImportRuntimeHints(WebsocketListenerRuntimeHints.class)
+public class WebsocketListener {
+    private String authBody;
+
+    private DanMuHandler handler;
+
+    @OnOpen
+    public void onOpen(Session session) throws IOException {
+//        System.out.println(DateUtil.now() + " 已连接服务...");
+        log.info("已连接服务...");
+//        this.handler = new DanMuHandler();
+        RemoteEndpoint.Async remote = session.getAsyncRemote();
+        //鉴权协议包
+        ByteBuffer authPack = ByteBuffer.wrap(generateAuthPack(authBody));
+        remote.sendBinary(authPack);
+        //每30秒发送心跳包
+        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        executorService.scheduleAtFixedRate(() -> {
+            try {
+                ByteBuffer heartBeatPack = ByteBuffer.wrap(generateHeartBeatPack());
+                remote.sendBinary(heartBeatPack);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }, 0, 30, TimeUnit.SECONDS);
+
+    }
+
+    @OnMessage
+    public void onMessage(ByteBuffer byteBuffer) {
+        //解包
+        unpack(byteBuffer);
+    }
+
+    @OnClose
+    public void onClose(Session session, CloseReason closeReason) {
+//        System.out.println(DateUtil.now() + " 关闭Websocket服务: " + closeReason);
+        log.info("关闭Websocket服务: " + closeReason);
+    }
+
+    @OnError
+    public void onError(Session session, Throwable t) {
+        log.info("Websocket服务异常: " + t.getMessage());
+    }
+
+    public interface Opt{
+        short HEARTBEAT = 2;//	客户端发送的心跳包(30秒发送一次)
+        short HEARTBEAT_REPLY = 3;//	服务器收到心跳包的回复 人气值，数据不是JSON，是4字节整数
+        short SEND_SMS_REPLY = 5;//	服务器推送的弹幕消息包
+        short AUTH = 7;//客户端发送的鉴权包(客户端发送的第一个包)
+        short AUTH_REPLY = 8;//服务器收到鉴权包后的回复
+    }
+    public interface Version{
+        short NORMAL = 0;//Body实际发送的数据——普通JSON数据
+        short ZIP = 2; //Body中是经过压缩后的数据，请使用zlib解压，然后按照Proto协议去解析。
+    }
+
+    /**
+     * 封包
+     * @param jsonStr 数据
+     * @param code 协议包类型
+     * @return
+     * @throws IOException
+     */
+    public static byte[] pack(String jsonStr, short code) throws IOException {
+        byte[] contentBytes = new byte[0];
+        if(Opt.AUTH == code){
+            contentBytes = jsonStr.getBytes();
+        }
+        try(ByteArrayOutputStream data = new ByteArrayOutputStream();
+            DataOutputStream stream = new DataOutputStream(data)){
+            stream.writeInt(contentBytes.length + 16);//封包总大小
+            stream.writeShort(16);//头部长度 header的长度，固定为16
+            stream.writeShort(Version.NORMAL);
+            stream.writeInt(code);//操作码（封包类型）
+            stream.writeInt(1);//保留字段，可以忽略。
+            if(Opt.AUTH == code){
+                stream.writeBytes(jsonStr);
+            }
+            return data.toByteArray();
+        }
+    }
+
+
+    /**
+     * 生成认证包
+     * @return
+     */
+    public static byte[] generateAuthPack(String jsonStr) throws IOException {
+        return pack(jsonStr, Opt.AUTH);
+    }
+    /**
+     * 生成心跳包
+     * @return
+     */
+    public static byte[] generateHeartBeatPack() throws IOException {
+        return pack(null, Opt.HEARTBEAT);
+    }
+
+
+    /**
+     * 解包
+     * @param byteBuffer
+     * @return
+     */
+    public void unpack(ByteBuffer byteBuffer){
+        int packageLen = byteBuffer.getInt();
+        short headLength = byteBuffer.getShort();
+        short protVer = byteBuffer.getShort();
+        int optCode = byteBuffer.getInt();
+        int sequence = byteBuffer.getInt();
+        if(Opt.HEARTBEAT_REPLY == optCode){
+//            System.out.println(DateUtil.now() + " 这是服务器心跳回复");
+            log.info("这是服务器心跳回复");
+        }
+        byte[] contentBytes = new byte[packageLen - headLength];
+        byteBuffer.get(contentBytes);
+        //如果是zip包就进行解包
+        if(Version.ZIP == protVer){
+            unpack(ByteBuffer.wrap(ZipUtil.unZlib(contentBytes)));
+            return;
+        }
+
+        String content = new String(contentBytes, StandardCharsets.UTF_8);
+        if(Opt.AUTH_REPLY == optCode){
+            //返回{"code":0}表示成功
+            log.info("这是鉴权回复："+content);
+        }
+        //真正的弹幕消息
+        if(Opt.SEND_SMS_REPLY == optCode){
+//            log.info("真正的弹幕消息："+content);
+            // todo 自定义处理
+            try {
+                handler.handleDanMu(content);
+            } catch (Exception e) {
+                log.info("弹幕处理异常");
+                e.printStackTrace();
+            }
+        }
+        //只存在ZIP包解压时才有的情况
+        //如果byteBuffer游标 小于 byteBuffer大小，那就证明还有数据
+        if(byteBuffer.position() < byteBuffer.limit()){
+            unpack(byteBuffer);
+        }
+    }
+
+//    static class WebsocketListenerRuntimeHints implements RuntimeHintsRegistrar {
+//
+//        @Override
+//        public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
+//            try {
+//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onOpen", Session.class), ExecutableMode.INVOKE);
+//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onClose", Session.class, CloseReason.class), ExecutableMode.INVOKE);
+//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onError", Session.class, Throwable.class), ExecutableMode.INVOKE);
+//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onMessage", ByteBuffer.class), ExecutableMode.INVOKE);
+//            } catch (NoSuchMethodException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//    }
+}
+
+

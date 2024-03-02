@@ -1,1 +1,0 @@
-java -jar ../../../target/bullet-keyboard-mapper-1.0.jar
