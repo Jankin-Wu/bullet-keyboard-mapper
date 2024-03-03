@@ -26,8 +26,6 @@ public class KeyboardSimulationJnaUtils {
             pressAndRelease(keyCode);
             log.info("模拟按键：{}", keyName);
         }
-
-
     }
 
     public static void pressAndRelease(byte keyCode) {
@@ -41,5 +39,29 @@ public class KeyboardSimulationJnaUtils {
         User32 INSTANCE = Native.load("user32", User32.class);
 
         void keybd_event(byte bVk, byte bScan, int dwFlags, int dwExtraInfo);
+    }
+
+    public static void press(String keyName) {
+        Byte keyCode = KeyMappingJnaEnum.getKeyCode(keyName);
+        if (Objects.nonNull(keyCode)) {
+            press(keyCode);
+        }
+    }
+
+    public static void release(String keyName) {
+        Byte keyCode = KeyMappingJnaEnum.getKeyCode(keyName);
+        if (Objects.nonNull(keyCode)) {
+            release(keyCode);
+        }
+    }
+
+    public static void press(byte keyCode) {
+        User32 user32 = User32.INSTANCE;
+        user32.keybd_event(keyCode, (byte) 0, 0, 0);
+    }
+
+    public static void release(byte keyCode) {
+        User32 user32 = User32.INSTANCE;
+        user32.keybd_event(keyCode, (byte) 0, 2, 0);
     }
 }

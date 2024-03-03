@@ -30,4 +30,8 @@ public class BasicConfig {
     private String simMethod = "jna";
 
     private String mappingFilePath;
+
+    private String processDir;
+
+    private Integer delayTime = 1000;
 }

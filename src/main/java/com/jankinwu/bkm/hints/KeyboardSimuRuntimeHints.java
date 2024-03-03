@@ -18,6 +18,8 @@ public class KeyboardSimuRuntimeHints implements RuntimeHintsRegistrar {
         try {
             hints.reflection().registerMethod(KeyboardSimulationAwtUtils.class.getMethod("pressAndRelease", String.class), ExecutableMode.INVOKE);
             hints.reflection().registerMethod(KeyboardSimulationJnaUtils.class.getMethod("pressAndRelease", String.class), ExecutableMode.INVOKE);
+            hints.reflection().registerMethod(KeyboardSimulationJnaUtils.class.getMethod("press", String.class), ExecutableMode.INVOKE);
+            hints.reflection().registerMethod(KeyboardSimulationJnaUtils.class.getMethod("release", String.class), ExecutableMode.INVOKE);
             hints.proxies().registerJdkProxy(KeyboardSimulationJnaUtils.User32.class);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);

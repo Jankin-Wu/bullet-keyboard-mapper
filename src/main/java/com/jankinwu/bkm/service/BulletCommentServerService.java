@@ -1,13 +1,11 @@
 package com.jankinwu.bkm.service;
 
-import cn.hutool.core.date.DateUtil;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.config.BasicConfig;
 import com.jankinwu.bkm.handler.ConfigHandler;
-import com.jankinwu.bkm.handler.DanMuHandler;
 import com.jankinwu.bkm.listener.WebsocketListener;
-import com.jankinwu.bkm.request.ProjectRequest;
+import com.jankinwu.bkm.request.SendRequest;
 import jakarta.annotation.PostConstruct;
 import jakarta.websocket.ContainerProvider;
 import jakarta.websocket.WebSocketContainer;
@@ -26,11 +24,11 @@ import java.util.Objects;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class BulletServerService {
+public class BulletCommentServerService {
 
     public final BasicConfig basicConfig;
 
-    private final DanMuHandler handler;
+    private final BulletCommentService bulletCommentService;
 
     private final ConfigHandler configHandler;
 
@@ -42,7 +40,7 @@ public class BulletServerService {
                 throw new RuntimeException("读取不到配置");
             }
             configHandler.verifyConfig(basicConfig);
-            ProjectRequest p = new ProjectRequest(basicConfig.getAppId(), basicConfig.getAccessKey(), basicConfig.getAccessSecret());
+            SendRequest p = new SendRequest(basicConfig.getAppId(), basicConfig.getAccessKey(), basicConfig.getAccessSecret());
             //获取弹幕服务信息
             String result = p.start(basicConfig.getIdCode());
 //            log.info("弹幕服务信息：{}", result);
@@ -63,7 +61,7 @@ public class BulletServerService {
             String uri = wssLinks.getString(0);
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
             // 连接到WebSocket服务器
-            container.connectToServer(new WebsocketListener(authBody, handler), new URI(uri));
+            container.connectToServer(new WebsocketListener(authBody, bulletCommentService), new URI(uri));
         } catch (Exception e) {
 //            ErrorDialog.displayErrorMessage(e.getMessage());
             log.error("运行异常：{}", e.getMessage());

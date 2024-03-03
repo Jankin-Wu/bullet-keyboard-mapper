@@ -1,6 +1,6 @@
 package com.jankinwu.bkm.config;
 
-import com.jankinwu.bkm.hints.DanMuHandlerRuntimeHints;
+import com.jankinwu.bkm.hints.BulletHandlerRuntimeHints;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class CommonConfig {
 
     @Bean
-    public DanMuHandlerRuntimeHints hintsRegistrar() {
-        return new DanMuHandlerRuntimeHints();
+    public BulletHandlerRuntimeHints hintsRegistrar() {
+        return new BulletHandlerRuntimeHints();
     }
 }

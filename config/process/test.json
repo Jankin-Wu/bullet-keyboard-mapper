@@ -1,0 +1,36 @@
+[
+  {
+    "processName": "测试组合键",
+    "stages": [
+      {
+        "order": 1,
+        "name": "step 1",
+        "intervalBefore": 200,
+        "intervalAfter": 35,
+        "repeatInterval": 30,
+        "times": 3,
+        "holdTime": 0,
+        "keys": [
+          "C",
+          "E",
+          "SPACE"
+        ]
+      },
+      {
+        "order": 2,
+        "name": "step 2",
+        "intervalBefore": 200,
+        "intervalAfter": 35,
+        "repeatInterval": 30,
+        "times": 3,
+        "holdTime": 0,
+        "keys": [
+          "S",
+          "H",
+          "I",
+          "SPACE"
+        ]
+      }
+    ]
+  }
+]

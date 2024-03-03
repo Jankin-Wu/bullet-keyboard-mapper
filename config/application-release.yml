@@ -11,5 +11,9 @@ app:
   ignoreCase: true
   # 按键映射文件路径
   mappingFilePath: "./config/keyMapping.json"
+  # 按键执行计划目录
+  processDir: "./config/process"
   # 触发方式（awt or jna），由于 GraalVM native image 打包原生镜像时不支持awt，所以默认使用 jna 实现按键模拟
   simMethod: jna
+  # 延迟时间（单位：ms），默认 1000ms
+  delayTime: 2000

@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectRequest {
+public class SendRequest {
     /**
      * 项目ID
      */

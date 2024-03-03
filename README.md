@@ -2,7 +2,7 @@
 
 ## 简介
 
-+ 基于 WebSocket 获取哔哩哔哩直播弹幕映射键位并通过 JNA 模拟为键盘输入指令，可用于开发弹幕互动游戏
++ 弹幕-键盘映射器，基于 Spring Native 开发，使用 WebSocket 获取哔哩哔哩直播弹幕映射键位并通过 JNA 模拟为键盘输入指令，支持编译为原生可执行文件，可用于开发弹幕互动游戏
 + `native-release-v1.0.0` 分支为使用 maven + GraalVM native image 打包的版本，之后的版本使用 Spring Boot Native 进行重构，简化打包流程
 
 ![](http://oss.jankinwu.com/img/Snipaste_2024-03-03_01-14-58.png)
@@ -67,5 +67,6 @@ mvn native:compile -Pnative -Prelease
 - [ ] 支持更多平台
 - [ ] 支持弹幕消息限流
 - [ ] 可视化交互界面（待定）
+- [ ] 支持获取礼物
   
   More...

@@ -1,8 +1,9 @@
 package com.jankinwu.bkm.listener;
 
 import cn.hutool.core.util.ZipUtil;
-import com.jankinwu.bkm.handler.DanMuHandler;
+import com.jankinwu.bkm.handler.BulletCommentHandler;
 import com.jankinwu.bkm.hints.WebsocketListenerRuntimeHints;
+import com.jankinwu.bkm.service.BulletCommentService;
 import jakarta.websocket.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 public class WebsocketListener {
     private String authBody;
 
-    private DanMuHandler handler;
+    private BulletCommentService bulletCommentService;
 
     @OnOpen
     public void onOpen(Session session) throws IOException {
@@ -162,7 +163,7 @@ public class WebsocketListener {
 //            log.info("真正的弹幕消息："+content);
             // todo 自定义处理
             try {
-                handler.handleDanMu(content);
+                bulletCommentService.handle(content);
             } catch (Exception e) {
                 log.info("弹幕处理异常");
                 e.printStackTrace();

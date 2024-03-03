@@ -1,0 +1,1770 @@
+[
+  {
+    "processName": "ESCAPE",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "ESCAPE"
+        ],
+        "name": "ESCAPE",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F1",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F1"
+        ],
+        "name": "F1",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F2",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F2"
+        ],
+        "name": "F2",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F3",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F3"
+        ],
+        "name": "F3",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F4",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F4"
+        ],
+        "name": "F4",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F5",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F5"
+        ],
+        "name": "F5",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F6",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F6"
+        ],
+        "name": "F6",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F7",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F7"
+        ],
+        "name": "F7",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F8",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F8"
+        ],
+        "name": "F8",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F9",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F9"
+        ],
+        "name": "F9",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F10",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F10"
+        ],
+        "name": "F10",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F11",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F11"
+        ],
+        "name": "F11",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F12",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F12"
+        ],
+        "name": "F12",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "A",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "A"
+        ],
+        "name": "A",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "B",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "B"
+        ],
+        "name": "B",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "C",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "C"
+        ],
+        "name": "C",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "D",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "D"
+        ],
+        "name": "D",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "E",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "E"
+        ],
+        "name": "E",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "F",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "F"
+        ],
+        "name": "F",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "G",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "G"
+        ],
+        "name": "G",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "H",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "H"
+        ],
+        "name": "H",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "I",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "I"
+        ],
+        "name": "I",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "J",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "J"
+        ],
+        "name": "J",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "K",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "K"
+        ],
+        "name": "K",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "L",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "L"
+        ],
+        "name": "L",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "M",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "M"
+        ],
+        "name": "M",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "N",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "N"
+        ],
+        "name": "N",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "O",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "O"
+        ],
+        "name": "O",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "P",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "P"
+        ],
+        "name": "P",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "Q",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "Q"
+        ],
+        "name": "Q",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "R",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "R"
+        ],
+        "name": "R",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "S",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "S"
+        ],
+        "name": "S",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "T",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "T"
+        ],
+        "name": "T",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "U",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "U"
+        ],
+        "name": "U",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "V",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "V"
+        ],
+        "name": "V",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "W",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "W"
+        ],
+        "name": "W",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "X",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "X"
+        ],
+        "name": "X",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "Y",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "Y"
+        ],
+        "name": "Y",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "Z",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "Z"
+        ],
+        "name": "Z",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_0",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_0"
+        ],
+        "name": "DIGIT_0",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_1",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_1"
+        ],
+        "name": "DIGIT_1",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_2",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_2"
+        ],
+        "name": "DIGIT_2",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_3",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_3"
+        ],
+        "name": "DIGIT_3",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_4",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_4"
+        ],
+        "name": "DIGIT_4",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_5",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_5"
+        ],
+        "name": "DIGIT_5",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_6",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_6"
+        ],
+        "name": "DIGIT_6",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_7",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_7"
+        ],
+        "name": "DIGIT_7",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_8",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_8"
+        ],
+        "name": "DIGIT_8",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DIGIT_9",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DIGIT_9"
+        ],
+        "name": "DIGIT_9",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "MINUS",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "MINUS"
+        ],
+        "name": "MINUS",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "EQUALS",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "EQUALS"
+        ],
+        "name": "EQUALS",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "OPEN_BRACKET",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "OPEN_BRACKET"
+        ],
+        "name": "OPEN_BRACKET",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "CLOSE_BRACKET",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "CLOSE_BRACKET"
+        ],
+        "name": "CLOSE_BRACKET",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "BACKSLASH",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "BACKSLASH"
+        ],
+        "name": "BACKSLASH",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "SEMICOLON",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "SEMICOLON"
+        ],
+        "name": "SEMICOLON",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "QUOTE",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "QUOTE"
+        ],
+        "name": "QUOTE",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "COMMA",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "COMMA"
+        ],
+        "name": "COMMA",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "PERIOD",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "PERIOD"
+        ],
+        "name": "PERIOD",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "SLASH",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "SLASH"
+        ],
+        "name": "SLASH",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "SPACE",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "SPACE"
+        ],
+        "name": "SPACE",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "TAB",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "TAB"
+        ],
+        "name": "TAB",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "ENTER",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "ENTER"
+        ],
+        "name": "ENTER",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "ENTER",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "ENTER"
+        ],
+        "name": "ENTER",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "BACKSPACE",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "BACKSPACE"
+        ],
+        "name": "BACKSPACE",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "SHIFT",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "SHIFT"
+        ],
+        "name": "SHIFT",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "CONTROL",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "CONTROL"
+        ],
+        "name": "CONTROL",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "ALT",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "ALT"
+        ],
+        "name": "ALT",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "WINDOWS",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "WINDOWS"
+        ],
+        "name": "WINDOWS",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "CONTEXT_MENU",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "CONTEXT_MENU"
+        ],
+        "name": "CONTEXT_MENU",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "LEFT_WINDOWS",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "LEFT_WINDOWS"
+        ],
+        "name": "LEFT_WINDOWS",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "RIGHT_WINDOWS",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "RIGHT_WINDOWS"
+        ],
+        "name": "RIGHT_WINDOWS",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "LEFT_ALT",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "LEFT_ALT"
+        ],
+        "name": "LEFT_ALT",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "LEFT_CONTROL",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "LEFT_CONTROL"
+        ],
+        "name": "LEFT_CONTROL",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "LEFT_SHIFT",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "LEFT_SHIFT"
+        ],
+        "name": "LEFT_SHIFT",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "UP",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "UP"
+        ],
+        "name": "UP",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DOWN",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DOWN"
+        ],
+        "name": "DOWN",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "LEFT",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "LEFT"
+        ],
+        "name": "LEFT",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "RIGHT",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "RIGHT"
+        ],
+        "name": "RIGHT",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_0",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_0"
+        ],
+        "name": "NUMPAD_0",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_1",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_1"
+        ],
+        "name": "NUMPAD_1",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_2",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_2"
+        ],
+        "name": "NUMPAD_2",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_3",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_3"
+        ],
+        "name": "NUMPAD_3",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_4",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_4"
+        ],
+        "name": "NUMPAD_4",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_5",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_5"
+        ],
+        "name": "NUMPAD_5",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_6",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_6"
+        ],
+        "name": "NUMPAD_6",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_7",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_7"
+        ],
+        "name": "NUMPAD_7",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_8",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_8"
+        ],
+        "name": "NUMPAD_8",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_9",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_9"
+        ],
+        "name": "NUMPAD_9",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_MULTIPLY",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_MULTIPLY"
+        ],
+        "name": "NUMPAD_MULTIPLY",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_SUBTRACT",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_SUBTRACT"
+        ],
+        "name": "NUMPAD_SUBTRACT",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_ADD",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_ADD"
+        ],
+        "name": "NUMPAD_ADD",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_DECIMAL",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_DECIMAL"
+        ],
+        "name": "NUMPAD_DECIMAL",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_DIVIDE",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_DIVIDE"
+        ],
+        "name": "NUMPAD_DIVIDE",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "NUMPAD_ENTER",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "NUMPAD_ENTER"
+        ],
+        "name": "NUMPAD_ENTER",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "INSERT",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "INSERT"
+        ],
+        "name": "INSERT",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "DELETE",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "DELETE"
+        ],
+        "name": "DELETE",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "HOME",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "HOME"
+        ],
+        "name": "HOME",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "END",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "END"
+        ],
+        "name": "END",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "PAGE_UP",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "PAGE_UP"
+        ],
+        "name": "PAGE_UP",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "PAGE_DOWN",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "PAGE_DOWN"
+        ],
+        "name": "PAGE_DOWN",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "CAPS_LOCK",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "CAPS_LOCK"
+        ],
+        "name": "CAPS_LOCK",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "SCROLL_LOCK",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "SCROLL_LOCK"
+        ],
+        "name": "SCROLL_LOCK",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "PAUSE",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "PAUSE"
+        ],
+        "name": "PAUSE",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  },
+  {
+    "processName": "PRINT_SCREEN",
+    "stages": [
+      {
+        "holdTime": 0,
+        "intervalAfter": 0,
+        "intervalBefore": 0,
+        "keys": [
+          "PRINT_SCREEN"
+        ],
+        "name": "PRINT_SCREEN",
+        "order": 1,
+        "repeatInterval": 100,
+        "times": 1
+      }
+    ]
+  }
+]

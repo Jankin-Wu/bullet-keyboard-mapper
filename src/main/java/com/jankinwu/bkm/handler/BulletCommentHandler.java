@@ -5,10 +5,12 @@ import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
+import com.jankinwu.bkm.cache.ProcessCache;
 import com.jankinwu.bkm.config.BasicConfig;
-import com.jankinwu.bkm.enums.KeySimMethodEnum;
-import com.jankinwu.bkm.hints.DanMuHandlerRuntimeHints;
+import com.jankinwu.bkm.hints.BulletHandlerRuntimeHints;
 import com.jankinwu.bkm.hints.KeyboardSimuRuntimeHints;
+import com.jankinwu.bkm.pojo.domain.ProcessData;
+import com.jankinwu.bkm.pojo.dto.RequestProcessContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ImportRuntimeHints;
@@ -18,13 +20,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 
 /**
@@ -34,8 +31,8 @@ import java.util.Objects;
  */
 @Slf4j
 @Component
-@ImportRuntimeHints({DanMuHandlerRuntimeHints.class, KeyboardSimuRuntimeHints.class})
-public class DanMuHandler {
+@ImportRuntimeHints({BulletHandlerRuntimeHints.class, KeyboardSimuRuntimeHints.class})
+public class BulletCommentHandler extends AbstractBulletCommentHandlerChain{
 
     private final Map<String, String> map = new HashMap<>();
     public static final String FILE_NAME = "keyMapping.json";
@@ -43,24 +40,24 @@ public class DanMuHandler {
     @Autowired
     private BasicConfig basicConfig;
 
-    public void handleDanMu(String content) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    @Autowired
+    private ProcessCache processCache;
+
+    @Override
+    public void doChain(RequestProcessContext context) {
         initMap();
-        JSONObject contentJson = JSONObject.parseObject(content);
-        JSONObject data = contentJson.getJSONObject("data");
-        String msg = data.getString("msg");
-        String uname = data.getString("uname");
-        log.info("[弹幕] {}: {}", uname, msg);
+        String msg = context.getRequest().getData().getMsg();
+        log.info("[弹幕] {}: {}", context.getRequest().getData().getUname(), msg);
         if (basicConfig.getIgnoreCase()) {
             msg = msg.toUpperCase(Locale.ROOT);
         }
-        String key = map.get(msg);
-        if (StrUtil.isNotBlank(key)) {
-            // 获取相应模拟键盘工具类并触发按键
-            Class<?> simUtils = KeySimMethodEnum.getSimUtils(basicConfig.getSimMethod());
-            if (Objects.nonNull(simUtils)) {
-                Method method = simUtils.getMethod("pressAndRelease", String.class);
-                method.invoke(null, key);
-            }
+        String name = map.get(msg);
+        Optional<ProcessData> optionalProcessData = processCache.getProcessList().stream()
+                .filter(processData -> processData.getProcessName().equals(name))
+                .findFirst();
+        optionalProcessData.ifPresent(context::setProcess);
+        if (getNext() != null) {
+            getNext().doChain(context);
         }
     }
 
@@ -107,7 +104,7 @@ public class DanMuHandler {
         for (int i = 0; i < jsonArray.size(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             String msg = jsonObject.getString("msg");
-            String key = jsonObject.getString("key");
+            String key = jsonObject.getString("processName");
             if (StrUtil.isNotBlank(msg) && StrUtil.isNotBlank(key)) {
                 map.put(msg, key);
             }

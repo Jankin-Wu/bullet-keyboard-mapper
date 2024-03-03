@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @date 2024/3/2 1:14
  */
 @Component
-public class DanMuHandlerRuntimeHints implements RuntimeHintsRegistrar {
+public class BulletHandlerRuntimeHints implements RuntimeHintsRegistrar {
 
     @Override
     public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
