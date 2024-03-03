@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Objects;
 
 /**
  * @author jankinwu
@@ -24,6 +25,9 @@ public class ProcessHandleChain extends AbstractBulletCommentHandlerChain{
 
     @Override
     public void doChain(RequestProcessContext context) {
+        if (Objects.isNull(context.getProcess())) {
+            return;
+        }
         for (Stage stage : context.getProcess().getStages()) {
             try {
                 executeStage(stage);
@@ -34,7 +38,7 @@ public class ProcessHandleChain extends AbstractBulletCommentHandlerChain{
     }
 
     private void executeStage(Stage stage) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        System.out.println("Executing stage: " + stage.getName());
+        log.info("Executing stage: " + stage.getName());
         try {
             Thread.sleep(stage.getIntervalBefore());
         } catch (InterruptedException e) {

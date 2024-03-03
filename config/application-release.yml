@@ -1,12 +1,12 @@
 app:
   # 身份码
-  idCode: ""
+  idCode: "DDRU0IKUE22O5"
   # access_key
-  accessKey: ""
+  accessKey: "uxq5IUpnzTs3fEwPFEowRFps"
   # access_secret
-  accessSecret: ""
+  accessSecret: "o6eQhMaXOqAYW7JPe0Emt6uNeyViWv"
   # 项目Id（13位数字）
-  appId:
+  appId: 1709262728931
   # 弹幕内容映射为按键时是否忽略大小写（默认忽略大小写）
   ignoreCase: true
   # 按键映射文件路径
@@ -15,5 +15,14 @@ app:
   processDir: "./config/process"
   # 触发方式（awt or jna），由于 GraalVM native image 打包原生镜像时不支持awt，所以默认使用 jna 实现按键模拟
   simMethod: jna
-  # 延迟时间（单位：ms），默认 1000ms
-  delayTime: 2000
+  scheduled:
+    # 每次执行process运行间隔
+    execution-interval: 10000
+    # 核心线程数大小
+    queue-core-pool-size: 1
+    # 最大线程数
+    queue-max-pool-size: 100
+    # 临时线程存活时间
+    queue-keep-alive-seconds: 60
+    # 工作队列容量
+    queue-capacity: 100

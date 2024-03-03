@@ -12,22 +12,25 @@ public class DelayedTask implements Delayed {
 
     // 延迟时间
     private final long delayTime;
-
-    // 到期时间
-    private final long expireTime;
-
     // 要执行的任务
     private final Runnable task;
 
+    // 任务执行时间
+    private final long executeTime;
+
     public DelayedTask(long delayTime, Runnable task) {
         this.delayTime = delayTime;
-        this.expireTime = System.currentTimeMillis() + delayTime;
         this.task = task;
+        this.executeTime = System.currentTimeMillis() + delayTime;
+    }
+
+    public void execute() {
+        task.run();
     }
 
     @Override
     public long getDelay(TimeUnit unit) {
-        return unit.convert(expireTime - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
+        return unit.convert(executeTime - System.currentTimeMillis(), TimeUnit.MILLISECONDS);
     }
 
     @Override
@@ -37,9 +40,5 @@ public class DelayedTask implements Delayed {
         }
         long diff = this.getDelay(TimeUnit.MILLISECONDS) - other.getDelay(TimeUnit.MILLISECONDS);
         return Long.compare(diff, 0);
-    }
-
-    public void execute() {
-        task.run();
     }
 }

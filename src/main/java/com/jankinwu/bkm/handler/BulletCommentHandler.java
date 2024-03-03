@@ -56,6 +56,9 @@ public class BulletCommentHandler extends AbstractBulletCommentHandlerChain{
                 .filter(processData -> processData.getProcessName().equals(name))
                 .findFirst();
         optionalProcessData.ifPresent(context::setProcess);
+        if (Objects.isNull(context.getProcess())) {
+            return;
+        }
         if (getNext() != null) {
             getNext().doChain(context);
         }

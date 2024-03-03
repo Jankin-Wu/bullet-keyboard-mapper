@@ -11,6 +11,7 @@ import com.jankinwu.bkm.pojo.request.BulletCommentRequest;
 import com.jankinwu.bkm.pojo.request.BulletCommentRequestData;
 import com.jankinwu.bkm.queue.DelayedTask;
 import com.jankinwu.bkm.queue.DelayedTaskManager;
+import com.jankinwu.bkm.queue.ScheduledQueueExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,17 +40,13 @@ public class BulletCommentService {
     public void handle(String content) {
         BulletCommentRequest request = parseRequest(content);
         RequestProcessContext context = new RequestProcessContext(request);
-        delayTaskHandlerChain.setNext(bulletCommentHandler);
-        bulletCommentHandler.setNext(processHandleChain);
-        addDelayedTask(context);
+        bulletCommentHandler.setNext(delayTaskHandlerChain);
+        delayTaskHandlerChain.setNext(processHandleChain);
+        bulletCommentHandler.doChain(context);
+
     }
 
-    private void addDelayedTask(RequestProcessContext context) {
-        Runnable task = () -> delayTaskHandlerChain.doChain(context);
-        long delayTime = basicConfig.getDelayTime(); // 延迟5秒执行
-        DelayedTask delayedTask = new DelayedTask(delayTime, task);
-        delayedTaskManager.addDelayedTask(delayedTask);
-    }
+
 
     /**
      * 由于 spring native 不支持反射，这里采用手动解析的方式
