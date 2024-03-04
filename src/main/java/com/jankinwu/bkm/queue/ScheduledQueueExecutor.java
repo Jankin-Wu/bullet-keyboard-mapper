@@ -1,6 +1,8 @@
 package com.jankinwu.bkm.queue;
 
+import com.jankinwu.bkm.handler.CustomRejectedExecutionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -12,25 +14,38 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @author wwg
+ * @author jankinwu
  * @description 定时队列
  * @date 2024/3/3 23:57
  */
 @Component
-@EnableAsync
 public class ScheduledQueueExecutor {
-    private BlockingQueue<Runnable> queue = new LinkedBlockingQueue<>();
+
+    private final BlockingQueue<Runnable> queue;
 
     @Autowired
     private AsyncTaskExecutor asyncTaskExecutor;
 
-    private Lock lock = new ReentrantLock();
+    private final RejectedExecutionHandler rejectionHandler;
 
-    public boolean addToQueue(Runnable task) {
-        return queue.offer(task);
+    private final Lock lock = new ReentrantLock();
+
+    @Autowired
+    public ScheduledQueueExecutor(@Value("${app.scheduled.queue-capacity}") int queueCapacity,
+                                  @Qualifier("customRejectionPolicy") RejectedExecutionHandler rejectionHandler) {
+        this.queue = new LinkedBlockingQueue<>(queueCapacity);
+        this.rejectionHandler = rejectionHandler;
     }
 
-    @Async("asyncTaskExecutor")
+    public void addToQueue(Runnable task) {
+        boolean added = queue.offer(task);
+        if (!added) {
+            // 执行拒绝策略
+            rejectionHandler.rejectedExecution(task, asyncTaskExecutor);
+        }
+    }
+
+
     @Scheduled(fixedDelayString = "${app.scheduled.execution-interval}")
     public void processQueue() {
         if (lock.tryLock()) {

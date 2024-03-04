@@ -28,10 +28,11 @@ public class ProcessHandleChain extends AbstractBulletCommentHandlerChain{
         if (Objects.isNull(context.getProcess())) {
             return;
         }
-        log.info("开始处理用户[{}]{}的任务", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
+        log.info("开始处理用户[{}]的任务[{}]", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
         for (Stage stage : context.getProcess().getStages()) {
             try {
                 executeStage(stage);
+                log.info("用户[{}]的任务[{}]执行完毕", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
             } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
                 log.error("stage [{}] 处理异常：{}",stage.getName(), e.getMessage());
             }
@@ -61,7 +62,6 @@ public class ProcessHandleChain extends AbstractBulletCommentHandlerChain{
                 }
             }
         }
-
         try {
             Thread.sleep(stage.getIntervalAfter());
         } catch (InterruptedException e) {

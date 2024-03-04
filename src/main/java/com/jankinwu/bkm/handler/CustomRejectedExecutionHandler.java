@@ -2,16 +2,18 @@ package com.jankinwu.bkm.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
- * @author wwg
+ * @author jankinwu
  * @description 任务拒绝策略
  * @date 2024/3/4 1:06
  */
 @Slf4j
+@Component
 public class CustomRejectedExecutionHandler implements RejectedExecutionHandler {
 
     public static final String ABORT_NEW = "abort-new";

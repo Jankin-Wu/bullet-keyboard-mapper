@@ -4,7 +4,7 @@ import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author wwg
+ * @author jankinwu
  * @description 延迟任务类
  * @date 2024/3/3 22:27
  */
