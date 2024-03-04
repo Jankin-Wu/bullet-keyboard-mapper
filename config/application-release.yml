@@ -1,12 +1,12 @@
 app:
   # 身份码
-  idCode: "DDRU0IKUE22O5"
+  idCode: ""
   # access_key
-  accessKey: "uxq5IUpnzTs3fEwPFEowRFps"
+  accessKey: ""
   # access_secret
-  accessSecret: "o6eQhMaXOqAYW7JPe0Emt6uNeyViWv"
+  accessSecret: ""
   # 项目Id（13位数字）
-  appId: 1709262728931
+  appId:
   # 弹幕内容映射为按键时是否忽略大小写（默认忽略大小写）
   ignoreCase: true
   # 按键映射文件路径
@@ -17,12 +17,8 @@ app:
   simMethod: jna
   scheduled:
     # 每次执行process运行间隔
-    execution-interval: 10000
-    # 核心线程数大小
-    queue-core-pool-size: 1
-    # 最大线程数
-    queue-max-pool-size: 100
-    # 临时线程存活时间
-    queue-keep-alive-seconds: 60
+    execution-interval: 1000
     # 工作队列容量
     queue-capacity: 100
+    # 拒绝策略，默认 abort-new 抛弃新任务，填其他则抛弃队列中最早添加即将要执行的任务
+    rejection-policy: abort-new

@@ -40,7 +40,6 @@ public class KeyboardHandler {
             releaseKey(key);
         }
         log.info("模拟按键：{}", String.join(" + ", stage.getKeys()));
-
     }
 
     private void pressKey(String key) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
