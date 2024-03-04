@@ -1,6 +1,7 @@
 package com.jankinwu.bkm.handler;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -12,8 +13,20 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 @Slf4j
 public class CustomRejectedExecutionHandler implements RejectedExecutionHandler {
+
+    public static final String ABORT_NEW = "abort-new";
+    @Value("${app.scheduled.rejection-policy:abort-new}")
+    private String rejectionPolicy;
+
     @Override
     public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-        log.warn("Task rejected: {}", r.toString());
+        RejectedExecutionHandler rejectedExecutionHandler;
+        if (ABORT_NEW.equals(rejectionPolicy)) {
+            rejectedExecutionHandler = new ThreadPoolExecutor.AbortPolicy();
+        } else {
+            rejectedExecutionHandler = new ThreadPoolExecutor.DiscardOldestPolicy();
+        }
+        rejectedExecutionHandler.rejectedExecution(r, executor);
+
     }
 }

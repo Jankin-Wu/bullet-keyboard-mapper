@@ -1,0 +1,35 @@
+[
+  {
+    "processName": "示例",
+    "stages": [
+      {
+        "order": 1,
+        "name": "step 1",
+        "intervalBefore": 200,
+        "intervalAfter": 35,
+        "repeatInterval": 30,
+        "times": 1,
+        "isMouse": false,
+        "holdTime": 0,
+        "keys": [
+          "ENTER",
+          "SHIFT"
+        ]
+      },
+      {
+        "order": 2,
+        "name": "step 2",
+        "intervalBefore": 200,
+        "intervalAfter": 35,
+        "repeatInterval": 30,
+        "times": 1,
+        "isMouse": false,
+        "holdTime": 0,
+        "keys": [
+          "1",
+          "2"
+        ]
+      }
+    ]
+  }
+]
