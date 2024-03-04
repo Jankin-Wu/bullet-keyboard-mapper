@@ -1,11 +1,9 @@
 package com.jankinwu.bkm.queue;
 
-import com.jankinwu.bkm.handler.CustomRejectedExecutionHandler;
+import com.jankinwu.bkm.executors.AsyncTaskExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 

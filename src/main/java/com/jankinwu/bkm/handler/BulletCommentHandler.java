@@ -52,6 +52,10 @@ public class BulletCommentHandler extends AbstractBulletCommentHandlerChain{
             msg = msg.toUpperCase(Locale.ROOT);
         }
         String name = map.get(msg);
+        if (Objects.isNull(processCache.getProcessList())) {
+            log.error("执行计划获取失败，请检查process文件中的格式是否正确");
+            return;
+        }
         Optional<ProcessData> optionalProcessData = processCache.getProcessList().stream()
                 .filter(processData -> processData.getProcessName().equals(name))
                 .findFirst();

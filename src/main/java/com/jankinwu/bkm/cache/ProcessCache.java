@@ -7,10 +7,12 @@ import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.config.BasicConfig;
 import com.jankinwu.bkm.pojo.domain.ProcessData;
 import com.jankinwu.bkm.pojo.domain.Stage;
+import com.jankinwu.bkm.executors.AsyncTaskExecutor;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -37,8 +39,15 @@ public class ProcessCache {
     private final BasicConfig basicConfig;
     private List<ProcessData> processList;
 
+    @Autowired
+    private AsyncTaskExecutor executor;
+
     @PostConstruct
     public void init() {
+        executor.execute(this::loadProcess);
+    }
+
+    private void loadProcess() {
         if (Objects.isNull(basicConfig)) {
             log.error("配置文件获取失败");
         }
@@ -50,13 +59,18 @@ public class ProcessCache {
         Path path = Path.of(processDir);
         try (Stream<Path> paths = Files.walk(path)) {
             log.info("执行计划目录：{}", path);
-            processList = paths
+            this.processList = paths
                     .filter(Files::isRegularFile)
                     .filter(p -> p.toString().endsWith(".json"))
                     .flatMap(p -> {
                         try {
                             String content = Files.readString(p);
-                            List<ProcessData> processesInFile = parseProcessData(content);
+                            List<ProcessData> processesInFile = null;
+                            try {
+                                processesInFile = parseProcessData(content);
+                            } catch (Exception e) {
+                                throw new RuntimeException("process文件解析异常，请检查格式是否正确");
+                            }
                             processesInFile.forEach(process -> process.getStages().sort(Comparator.comparingInt(Stage::getOrder)));
                             return processesInFile.stream();
                         } catch (IOException e) {
