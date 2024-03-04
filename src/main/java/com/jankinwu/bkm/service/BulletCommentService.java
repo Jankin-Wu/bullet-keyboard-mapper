@@ -49,7 +49,7 @@ public class BulletCommentService {
 
 
     /**
-     * 由于 spring native 不支持反射，这里采用手动解析的方式
+     * 由于使用native方式打包时候不支持反射，这里采用手动解析的方式
      * @param content 弹幕消息
      * @return BulletCommentRequest
      */

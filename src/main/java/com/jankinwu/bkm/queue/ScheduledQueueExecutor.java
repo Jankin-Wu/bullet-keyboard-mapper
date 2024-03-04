@@ -26,8 +26,8 @@ public class ScheduledQueueExecutor {
 
     private Lock lock = new ReentrantLock();
 
-    public void addToQueue(Runnable task) {
-        queue.offer(task);
+    public boolean addToQueue(Runnable task) {
+        return queue.offer(task);
     }
 
     @Async("asyncTaskExecutor")

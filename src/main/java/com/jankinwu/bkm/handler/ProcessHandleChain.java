@@ -28,6 +28,7 @@ public class ProcessHandleChain extends AbstractBulletCommentHandlerChain{
         if (Objects.isNull(context.getProcess())) {
             return;
         }
+        log.info("开始处理用户[{}]{}的任务", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
         for (Stage stage : context.getProcess().getStages()) {
             try {
                 executeStage(stage);

@@ -35,10 +35,15 @@ public class DelayTaskHandlerChain extends AbstractBulletCommentHandlerChain {
             }
         };
         try {
-            scheduledQueueExecutor.addToQueue(task);
+            if (!scheduledQueueExecutor.addToQueue(task)) {
+                log.warn("用户[{}]{}的任务插入队列失败", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
+            } else {
+                log.info("用户[{}]{}的任务插入队列成功", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
+            }
         } catch (RejectedExecutionException e) {
-            log.warn("用户：{}，{}的任务被抛弃", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
+            log.warn("用户[{}]{}的任务被抛弃", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
         }
+        // 插入延迟队列
 //        long delayTime = basicConfig.getDelayTime();
 //        DelayedTask delayedTask = new DelayedTask(delayTime, task);
 //        delayedTaskManager.addDelayedTask(delayedTask);
