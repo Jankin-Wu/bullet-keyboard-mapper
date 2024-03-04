@@ -48,16 +48,13 @@ public class BulletCommentHandler extends AbstractBulletCommentHandlerChain{
         initMap();
         String msg = context.getRequest().getData().getMsg();
         log.info("[弹幕] {}: {}", context.getRequest().getData().getUname(), msg);
-        if (basicConfig.getIgnoreCase()) {
-            msg = msg.toUpperCase(Locale.ROOT);
-        }
         String name = map.get(msg);
         if (Objects.isNull(processCache.getProcessList())) {
             log.error("执行计划获取失败，请检查process文件中的格式是否正确");
             return;
         }
         Optional<ProcessData> optionalProcessData = processCache.getProcessList().stream()
-                .filter(processData -> processData.getProcessName().equals(name))
+                .filter(processData -> StrUtil.equals(processData.getProcessName(), name, basicConfig.getIgnoreCase()))
                 .findFirst();
         optionalProcessData.ifPresent(context::setProcess);
         if (Objects.isNull(context.getProcess())) {

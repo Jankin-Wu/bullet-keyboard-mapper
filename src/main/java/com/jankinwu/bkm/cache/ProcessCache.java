@@ -69,7 +69,7 @@ public class ProcessCache {
                             try {
                                 processesInFile = parseProcessData(content);
                             } catch (Exception e) {
-                                throw new RuntimeException("process文件解析异常，请检查格式是否正确");
+                                throw new RuntimeException("process文件解析异常，请检查文件内容格式是否正确，请修正后重启应用。");
                             }
                             processesInFile.forEach(process -> process.getStages().sort(Comparator.comparingInt(Stage::getOrder)));
                             return processesInFile.stream();

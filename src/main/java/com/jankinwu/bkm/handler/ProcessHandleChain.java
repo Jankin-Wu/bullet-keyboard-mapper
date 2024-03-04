@@ -32,11 +32,14 @@ public class ProcessHandleChain extends AbstractBulletCommentHandlerChain{
         for (Stage stage : context.getProcess().getStages()) {
             try {
                 executeStage(stage);
-                log.info("用户[{}]的任务[{}]执行完毕", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
-            } catch (InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+                log.info("stage[{}]执行完毕", stage.getName());
+            } catch (InvocationTargetException e) {
+                log.error("stage [{}] 处理异常：{}",stage.getName(), e.getTargetException().getMessage());
+            } catch (NoSuchMethodException | IllegalAccessException e) {
                 log.error("stage [{}] 处理异常：{}",stage.getName(), e.getMessage());
             }
         }
+        log.info("用户[{}]的任务[{}]执行完毕", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
     }
 
     private void executeStage(Stage stage) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {

@@ -103,5 +103,7 @@
   {"msg": "SCROLL_LOCK", "processName": "SCROLL_LOCK"},
   {"msg": "PAUSE", "processName": "PAUSE"},
   {"msg": "PRINT_SCREEN", "processName": "PRINT_SCREEN"},
-  {"msg": "测试", "processName": "测试组合键"}
+  {"msg": "测试", "processName": "测试组合键"},
+  {"msg": "qw", "processName": "意大利佣兵团步兵部队"},
+  {"msg": "qe", "processName": "意大利佣兵团步兵部队"}
 ]

@@ -31,7 +31,8 @@ public class DelayedTaskManager {
     }
 
     // 定时检查并执行到期的任务
-    @Scheduled(fixedDelay = 1000) // 每秒钟检查一次
+    // 每秒钟检查一次
+    @Scheduled(fixedDelay = 1000)
     public void checkDelayedTasks() {
         while (!delayQueue.isEmpty()) {
             DelayedTask task = delayQueue.poll();

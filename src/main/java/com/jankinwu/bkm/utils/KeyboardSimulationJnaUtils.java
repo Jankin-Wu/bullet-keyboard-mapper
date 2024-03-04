@@ -45,6 +45,8 @@ public class KeyboardSimulationJnaUtils {
         Byte keyCode = KeyMappingJnaEnum.getKeyCode(keyName);
         if (Objects.nonNull(keyCode)) {
             press(keyCode);
+        }else {
+            throw new RuntimeException("匹配不到按键，请检查按键名称是否正确");
         }
     }
 
