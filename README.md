@@ -5,19 +5,27 @@
 + 弹幕-键盘映射器，基于 Spring Native 开发，使用 WebSocket 获取哔哩哔哩直播弹幕映射键位并通过 JNA 模拟为键盘输入指令，支持编译为原生可执行文件，可用于开发弹幕互动游戏
 + `native-release-v1.0.0` 分支为使用 maven + GraalVM native image 打包的版本，之后的版本使用 Spring Boot Native 进行重构，简化打包流程
 
-![](http://oss.jankinwu.com/img/Snipaste_2024-03-03_01-14-58.png)
+![image-20240305010917887](http://oss.jankinwu.com/img/image-20240305010917887.png)
 <p style="text-align: center;">运行效果</p>
 
 ## 特性
-### 支持多条弹幕内容映射一个按键
 
 ### 本地可执行文件
 基于 Spring Boot Native 技术开发，支持编译为原生可执行文件，不依赖 Java 运行环境即可运行。
 
+### 支持多对一配置按键映射规则
+弹幕和执行计划多对一映射
+
+### 支持按键执行计划
+可定制组合键、长按时长、按压次数、间隔时间
+
+### 支持定时任务队列
+可根据实际需求配任务队列大小和执行间隔
+
 ### 配置文件
 + `application-release.yml`：账户信息和功能配置文件
-+ `keyMapping.json`：弹幕内容和键位的映射关系，其中`msg`为弹幕内容，`key`为触发键位。
-
++ `keyMapping.json`：弹幕内容和执行计划的映射关系，其中`msg`为弹幕内容，`process`为对应执行计划。
++ `process目录下的文件`: 执行计划文件，可配置按键执行流程，默认已配置好所有单键的执行计划
 ## 使用说明
 **release-v1.0.0 版**
 
@@ -60,13 +68,13 @@ mvn native:compile -Pnative -Prelease
 由于打 native 包的时候会启动项目获取元数据（代理、配置文件、反射信息等），打包前请先配置好 `application-release.yml`中的各项参数，否则打包将会失败
 
 ## 计划功能
-- [ ] 支持组合键
-- [ ] 支持长按操作
-- [ ] 支持按键执行计划
+- [x] 支持组合键
+- [x] 支持长按操作
+- [x] 支持按键执行计划
 - [ ] 支持鼠标指令
 - [ ] 支持更多平台
 - [ ] 支持弹幕消息限流
 - [ ] 可视化交互界面（待定）
-- [ ] 支持获取礼物
+- [ ] 支持获取礼物信息
   
   More...
