@@ -2,7 +2,7 @@
 
 ## 简介
 
-+ 弹幕-键盘映射器，基于 Spring Native 开发，使用 WebSocket 获取哔哩哔哩直播弹幕映射键位并通过 JNA 模拟为键盘输入指令，支持编译为原生可执行文件，可用于开发弹幕互动游戏
++ 弹幕-键盘映射器，基于 Spring Native 开发，使用 WebSocket 获取哔哩哔哩直播弹幕映射键位并通过 JNA 模拟为键盘输入指令，支持编译为原生可执行文件，通过简单的配置即可用于开发弹幕互动游戏
 + `native-release-v1.0.0` 分支为使用 maven + GraalVM native image 打包的版本，之后的版本使用 Spring Boot Native 进行重构，简化打包流程
 
 ![image-20240305010917887](http://oss.jankinwu.com/img/image-20240305010917887.png)
@@ -23,7 +23,7 @@
 可根据实际需求配值任务队列大小和执行间隔
 
 ### 配置文件
-+ `application-release.yml`：账户信息和功能配置文件
++ `application-release.yml`：账户信息和功能配置文件，其中除身份码以外的账户信息需要注册哔哩哔哩开放平台获取，身份码在直播姬中即可获取。
 + `keyMapping.json`：弹幕内容和执行计划的映射关系，其中`msg`为弹幕内容，`processName`为对应执行计划名称。
 + `process 目录下的文件`: 执行计划文件，可配置按键执行流程，默认已配置好所有单键的执行计划
 ## 使用说明
