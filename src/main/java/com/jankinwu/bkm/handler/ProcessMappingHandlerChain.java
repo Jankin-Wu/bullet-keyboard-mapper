@@ -21,7 +21,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -48,18 +50,20 @@ public class ProcessMappingHandlerChain extends AbstractBulletResponseHandlerCha
         initMap();
         String msg = context.getRequest().getData().getMsg();
         log.info("[弹幕] {}: {}", context.getRequest().getData().getUname(), msg);
-        String name = map.get(msg);
-        if (Objects.isNull(processCache.getProcessList())) {
+        if (Objects.isNull(processCache.getProcessMap())) {
             log.error("执行计划获取失败，请检查process文件中的格式是否正确");
             return;
         }
-        Optional<ProcessData> optionalProcessData = processCache.getProcessList().stream()
-                .filter(processData -> StrUtil.equals(processData.getProcessName(), name, basicConfig.getIgnoreCase()))
-                .findFirst();
-        optionalProcessData.ifPresent(context::setProcess);
-        if (Objects.isNull(context.getProcess())) {
+        // 根据是否忽略大小写匹配执行计划
+        ProcessData processData = map.entrySet().stream()
+                .filter(entry -> StrUtil.equals(entry.getKey(), msg, basicConfig.getIgnoreCase()))
+                .map(entry -> processCache.getProcessMap().get(entry.getValue()))
+                .findFirst()
+                .orElse(null);
+        if (Objects.isNull(processData)) {
             return;
         }
+        context.setProcess(processData);
         if (getNext() != null) {
             getNext().doChain(context);
         }

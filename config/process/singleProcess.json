@@ -1054,23 +1054,6 @@
     ]
   },
   {
-    "processName": "ENTER",
-    "stages": [
-      {
-        "holdTime": 0,
-        "intervalAfter": 0,
-        "intervalBefore": 0,
-        "keys": [
-          "ENTER"
-        ],
-        "name": "ENTER",
-        "order": 1,
-        "repeatInterval": 100,
-        "repeatTimes": 1
-      }
-    ]
-  },
-  {
     "processName": "BACKSPACE",
     "stages": [
       {
