@@ -39,8 +39,7 @@ public class ProcessCache {
     private final BasicConfig basicConfig;
     private List<ProcessData> processList;
 
-    @Autowired
-    private AsyncTaskExecutor executor;
+    private final AsyncTaskExecutor executor;
 
     @PostConstruct
     public void init() {

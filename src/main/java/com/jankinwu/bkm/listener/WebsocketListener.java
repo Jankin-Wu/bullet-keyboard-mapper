@@ -1,7 +1,6 @@
 package com.jankinwu.bkm.listener;
 
 import cn.hutool.core.util.ZipUtil;
-import com.jankinwu.bkm.handler.BulletCommentHandler;
 import com.jankinwu.bkm.hints.WebsocketListenerRuntimeHints;
 import com.jankinwu.bkm.service.BulletCommentService;
 import jakarta.websocket.*;
@@ -161,7 +160,6 @@ public class WebsocketListener {
         //真正的弹幕消息
         if(Opt.SEND_SMS_REPLY == optCode){
 //            log.info("真正的弹幕消息："+content);
-            // todo 自定义处理
             try {
                 bulletCommentService.handle(content);
             } catch (Exception e) {
@@ -175,21 +173,6 @@ public class WebsocketListener {
             unpack(byteBuffer);
         }
     }
-
-//    static class WebsocketListenerRuntimeHints implements RuntimeHintsRegistrar {
-//
-//        @Override
-//        public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
-//            try {
-//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onOpen", Session.class), ExecutableMode.INVOKE);
-//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onClose", Session.class, CloseReason.class), ExecutableMode.INVOKE);
-//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onError", Session.class, Throwable.class), ExecutableMode.INVOKE);
-//                hints.reflection().registerMethod(WebsocketListener.class.getMethod("onMessage", ByteBuffer.class), ExecutableMode.INVOKE);
-//            } catch (NoSuchMethodException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//    }
 }
 
 

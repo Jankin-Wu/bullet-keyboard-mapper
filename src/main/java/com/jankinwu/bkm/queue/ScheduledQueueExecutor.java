@@ -29,7 +29,7 @@ public class ScheduledQueueExecutor {
     private final Lock lock = new ReentrantLock();
 
     @Autowired
-    public ScheduledQueueExecutor(@Value("${app.scheduled.queue-capacity}") int queueCapacity,
+    public ScheduledQueueExecutor(@Value("${app.scheduled.queue-capacity:100}") int queueCapacity,
                                   @Qualifier("customRejectionPolicy") RejectedExecutionHandler rejectionHandler) {
         this.queue = new LinkedBlockingQueue<>(queueCapacity);
         this.rejectionHandler = rejectionHandler;
@@ -44,7 +44,7 @@ public class ScheduledQueueExecutor {
     }
 
 
-    @Scheduled(fixedDelayString = "${app.scheduled.execution-interval}")
+    @Scheduled(fixedDelayString = "${app.scheduled.execution-interval:1000}")
     public void processQueue() {
         if (lock.tryLock()) {
             try {

@@ -23,7 +23,7 @@ public class CommonConfig {
         return new BulletHandlerRuntimeHints();
     }
 
-    @Value("${app.scheduled.queue-capacity}")
+    @Value("${app.scheduled.queue-capacity:100}")
     private int queueCapacity;
 
     @Bean("taskQueue")

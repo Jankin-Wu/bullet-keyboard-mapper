@@ -32,7 +32,7 @@ import java.util.*;
 @Slf4j
 @Component
 @ImportRuntimeHints({BulletHandlerRuntimeHints.class, KeyboardSimuRuntimeHints.class})
-public class BulletCommentHandler extends AbstractBulletCommentHandlerChain{
+public class ProcessMappingHandlerChain extends AbstractBulletResponseHandlerChain {
 
     private final Map<String, String> map = new HashMap<>();
     public static final String FILE_NAME = "keyMapping.json";
