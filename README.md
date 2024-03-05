@@ -17,10 +17,10 @@
 弹幕和执行计划多对一映射
 
 ### 支持按键执行计划
-可定制组合键、长按时长、按压次数、间隔时间
+可定制执行流程、组合键、长按时长、按压次数、间隔时间
 
 ### 支持定时任务队列
-可根据实际需求配任务队列大小和执行间隔
+可根据实际需求配值任务队列大小和执行间隔
 
 ### 配置文件
 + `application-release.yml`：账户信息和功能配置文件
@@ -33,7 +33,7 @@
 
 **release-v1.0.0 之后版本**
 
-解压`Bullet_Keyboard_Mapper.zip`后配置`application-release.yml`即可开始使用，修改`application-release.yml`或`keyMapping.json`文件需要重启应用后才能生效
+解压`Bullet_Keyboard_Mapper.zip`后配置`application-release.yml`即可开始使用，修改`config`目录下的文件需要重启应用后才能生效
 
 ## 打包方式
 
