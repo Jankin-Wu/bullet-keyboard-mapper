@@ -8,7 +8,7 @@
         "intervalBefore": 200,
         "intervalAfter": 35,
         "repeatInterval": 30,
-        "times": 1,
+        "repeatTimes": 1,
         "isMouse": false,
         "holdTime": 0,
         "keys": [
@@ -22,7 +22,7 @@
         "intervalBefore": 200,
         "intervalAfter": 35,
         "repeatInterval": 30,
-        "times": 1,
+        "repeatTimes": 1,
         "isMouse": false,
         "holdTime": 0,
         "keys": [

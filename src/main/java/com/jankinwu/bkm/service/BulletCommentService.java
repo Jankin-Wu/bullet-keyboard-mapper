@@ -3,6 +3,7 @@ package com.jankinwu.bkm.service;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.config.BasicConfig;
+import com.jankinwu.bkm.handler.LimitRateHandlerChain;
 import com.jankinwu.bkm.handler.ProcessMappingHandlerChain;
 import com.jankinwu.bkm.handler.DelayTaskHandlerChain;
 import com.jankinwu.bkm.handler.ProcessHandleChain;
@@ -32,14 +33,17 @@ public class BulletCommentService {
 
     private final DelayTaskHandlerChain delayTaskHandlerChain;
 
+    private final LimitRateHandlerChain limitRateHandlerChain;
+
     private final BasicConfig basicConfig;
 
     public void handle(String content) {
         BulletCommentRequest request = parseRequest(content);
         RequestProcessContext context = new RequestProcessContext(request);
+        limitRateHandlerChain.setNext(bulletCommentHandler);
         bulletCommentHandler.setNext(delayTaskHandlerChain);
         delayTaskHandlerChain.setNext(processHandleChain);
-        bulletCommentHandler.doChain(context);
+        limitRateHandlerChain.doChain(context);
 
     }
 

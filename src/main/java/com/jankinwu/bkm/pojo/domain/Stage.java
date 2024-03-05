@@ -22,7 +22,7 @@ public class Stage {
 
     private int repeatInterval = 100;
 
-    private int times = 1;
+    private int repeatTimes = 1;
 
     private int holdTime = 0;
 

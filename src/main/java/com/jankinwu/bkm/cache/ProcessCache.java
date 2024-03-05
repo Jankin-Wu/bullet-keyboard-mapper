@@ -5,14 +5,13 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.config.BasicConfig;
+import com.jankinwu.bkm.executors.AsyncTaskExecutor;
 import com.jankinwu.bkm.pojo.domain.ProcessData;
 import com.jankinwu.bkm.pojo.domain.Stage;
-import com.jankinwu.bkm.executors.AsyncTaskExecutor;
 import jakarta.annotation.PostConstruct;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -37,6 +36,7 @@ import java.util.stream.Stream;
 public class ProcessCache {
 
     private final BasicConfig basicConfig;
+
     private List<ProcessData> processList;
 
     private final AsyncTaskExecutor executor;
@@ -64,7 +64,7 @@ public class ProcessCache {
                     .flatMap(p -> {
                         try {
                             String content = Files.readString(p);
-                            List<ProcessData> processesInFile = null;
+                            List<ProcessData> processesInFile;
                             try {
                                 processesInFile = parseProcessData(content);
                             } catch (Exception e) {
@@ -84,6 +84,7 @@ public class ProcessCache {
 
     /**
      * 由于使用native方式打包时候不支持反射，这里采用手动解析的方式
+     *
      * @param content process content
      * @return List<ProcessData>
      */
@@ -107,7 +108,7 @@ public class ProcessCache {
                 stage.setIntervalBefore(stageObject.getIntValue("intervalBefore"));
                 stage.setIntervalAfter(stageObject.getIntValue("intervalAfter"));
                 stage.setRepeatInterval(stageObject.getIntValue("repeatInterval"));
-                stage.setTimes(stageObject.getIntValue("times"));
+                stage.setRepeatTimes(stageObject.getIntValue("repeatTimes"));
                 stage.setHoldTime(stageObject.getIntValue("holdTime"));
                 stage.setMouse(stageObject.getBooleanValue("isMouse"));
 
