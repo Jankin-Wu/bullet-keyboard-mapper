@@ -3,18 +3,15 @@ package com.jankinwu.bkm.service;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.config.BasicConfig;
-import com.jankinwu.bkm.handler.BulletCommentHandler;
+import com.jankinwu.bkm.handler.ProcessMappingHandlerChain;
 import com.jankinwu.bkm.handler.DelayTaskHandlerChain;
 import com.jankinwu.bkm.handler.ProcessHandleChain;
 import com.jankinwu.bkm.pojo.dto.RequestProcessContext;
 import com.jankinwu.bkm.pojo.request.BulletCommentRequest;
 import com.jankinwu.bkm.pojo.request.BulletCommentRequestData;
-import com.jankinwu.bkm.queue.DelayedTask;
 import com.jankinwu.bkm.queue.DelayedTaskManager;
-import com.jankinwu.bkm.queue.ScheduledQueueExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -27,7 +24,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class BulletCommentService {
     
-    private final BulletCommentHandler bulletCommentHandler;
+    private final ProcessMappingHandlerChain bulletCommentHandler;
 
     private final ProcessHandleChain processHandleChain;
 

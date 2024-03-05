@@ -11,13 +11,13 @@ import java.util.Objects;
 
 /**
  * @author jankinwu
- * @description 流程处理链
+ * @description 执行计划处理器
  * @date 2024/3/3 17:32
  */
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class ProcessHandleChain extends AbstractBulletCommentHandlerChain{
+public class ProcessHandleChain extends AbstractBulletResponseHandlerChain {
 
     private final KeyboardHandler keyboardHandler;
 

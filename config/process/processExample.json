@@ -26,8 +26,8 @@
         "isMouse": false,
         "holdTime": 0,
         "keys": [
-          "1",
-          "2"
+          "NUMPAD_1",
+          "NUMPAD_2"
         ]
       }
     ]

@@ -1,7 +1,6 @@
 package com.jankinwu.bkm.handler;
 
 import com.jankinwu.bkm.pojo.dto.RequestProcessContext;
-import com.jankinwu.bkm.queue.DelayedTaskManager;
 import com.jankinwu.bkm.queue.ScheduledQueueExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +16,7 @@ import java.util.concurrent.RejectedExecutionException;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-public class DelayTaskHandlerChain extends AbstractBulletCommentHandlerChain {
+public class DelayTaskHandlerChain extends AbstractBulletResponseHandlerChain {
 
     private final ScheduledQueueExecutor scheduledQueueExecutor;
 
