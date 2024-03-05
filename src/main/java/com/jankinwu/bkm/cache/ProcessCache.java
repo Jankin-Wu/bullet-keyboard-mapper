@@ -18,10 +18,9 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -37,7 +36,7 @@ public class ProcessCache {
 
     private final BasicConfig basicConfig;
 
-    private List<ProcessData> processList;
+    private Map<String, ProcessData> processMap;
 
     private final AsyncTaskExecutor executor;
 
@@ -58,7 +57,7 @@ public class ProcessCache {
         Path path = Path.of(processDir);
         try (Stream<Path> paths = Files.walk(path)) {
             log.info("执行计划目录：{}", path);
-            this.processList = paths
+            this.processMap = paths
                     .filter(Files::isRegularFile)
                     .filter(p -> p.toString().endsWith(".json"))
                     .flatMap(p -> {
@@ -75,11 +74,18 @@ public class ProcessCache {
                         } catch (IOException e) {
                             throw new UncheckedIOException(e);
                         }
-                    }).toList();
+                    }).collect(Collectors.toMap(
+                    ProcessData::getProcessName,
+                    Function.identity(),
+                    (existingValue, newValue) -> {
+                        log.warn("存在相同的 ProcessName： {}", existingValue.getProcessName());
+                        return existingValue;
+                    }
+            ));
         } catch (IOException ex) {
             log.error("按键执行计划加载失败: {}", ex.getMessage());
         }
-        log.info("按键执行计划加载完成！已加载执行计划数量：{}", processList.size());
+        log.info("按键执行计划加载完成！已加载执行计划数量：{}", processMap.size());
     }
 
     /**
