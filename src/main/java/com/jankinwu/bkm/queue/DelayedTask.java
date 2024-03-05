@@ -10,8 +10,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class DelayedTask implements Delayed {
 
-    // 延迟时间
-    private final long delayTime;
     // 要执行的任务
     private final Runnable task;
 
@@ -19,7 +17,7 @@ public class DelayedTask implements Delayed {
     private final long executeTime;
 
     public DelayedTask(long delayTime, Runnable task) {
-        this.delayTime = delayTime;
+        // 延迟时间
         this.task = task;
         this.executeTime = System.currentTimeMillis() + delayTime;
     }

@@ -12,7 +12,7 @@
         "name": "ESCAPE",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -29,7 +29,7 @@
         "name": "F1",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -46,7 +46,7 @@
         "name": "F2",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -63,7 +63,7 @@
         "name": "F3",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -80,7 +80,7 @@
         "name": "F4",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -97,7 +97,7 @@
         "name": "F5",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -114,7 +114,7 @@
         "name": "F6",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -131,7 +131,7 @@
         "name": "F7",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -148,7 +148,7 @@
         "name": "F8",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -165,7 +165,7 @@
         "name": "F9",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -182,7 +182,7 @@
         "name": "F10",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -199,7 +199,7 @@
         "name": "F11",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -216,7 +216,7 @@
         "name": "F12",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -233,7 +233,7 @@
         "name": "A",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -250,7 +250,7 @@
         "name": "B",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -267,7 +267,7 @@
         "name": "C",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -284,7 +284,7 @@
         "name": "D",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -301,7 +301,7 @@
         "name": "E",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -318,7 +318,7 @@
         "name": "F",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -335,7 +335,7 @@
         "name": "G",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -352,7 +352,7 @@
         "name": "H",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -369,7 +369,7 @@
         "name": "I",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -386,7 +386,7 @@
         "name": "J",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -403,7 +403,7 @@
         "name": "K",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -420,7 +420,7 @@
         "name": "L",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -437,7 +437,7 @@
         "name": "M",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -454,7 +454,7 @@
         "name": "N",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -471,7 +471,7 @@
         "name": "O",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -488,7 +488,7 @@
         "name": "P",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -505,7 +505,7 @@
         "name": "Q",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -522,7 +522,7 @@
         "name": "R",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -539,7 +539,7 @@
         "name": "S",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -556,7 +556,7 @@
         "name": "T",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -573,7 +573,7 @@
         "name": "U",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -590,7 +590,7 @@
         "name": "V",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -607,7 +607,7 @@
         "name": "W",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -624,7 +624,7 @@
         "name": "X",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -641,7 +641,7 @@
         "name": "Y",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -658,7 +658,7 @@
         "name": "Z",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -675,7 +675,7 @@
         "name": "DIGIT_0",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -692,7 +692,7 @@
         "name": "DIGIT_1",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -709,7 +709,7 @@
         "name": "DIGIT_2",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -726,7 +726,7 @@
         "name": "DIGIT_3",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -743,7 +743,7 @@
         "name": "DIGIT_4",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -760,7 +760,7 @@
         "name": "DIGIT_5",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -777,7 +777,7 @@
         "name": "DIGIT_6",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -794,7 +794,7 @@
         "name": "DIGIT_7",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -811,7 +811,7 @@
         "name": "DIGIT_8",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -828,7 +828,7 @@
         "name": "DIGIT_9",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -845,7 +845,7 @@
         "name": "MINUS",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -862,7 +862,7 @@
         "name": "EQUALS",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -879,7 +879,7 @@
         "name": "OPEN_BRACKET",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -896,7 +896,7 @@
         "name": "CLOSE_BRACKET",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -913,7 +913,7 @@
         "name": "BACKSLASH",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -930,7 +930,7 @@
         "name": "SEMICOLON",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -947,7 +947,7 @@
         "name": "QUOTE",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -964,7 +964,7 @@
         "name": "COMMA",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -981,7 +981,7 @@
         "name": "PERIOD",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -998,7 +998,7 @@
         "name": "SLASH",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1015,7 +1015,7 @@
         "name": "SPACE",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1032,7 +1032,7 @@
         "name": "TAB",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1049,7 +1049,7 @@
         "name": "ENTER",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1066,7 +1066,7 @@
         "name": "ENTER",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1083,7 +1083,7 @@
         "name": "BACKSPACE",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1100,7 +1100,7 @@
         "name": "SHIFT",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1117,7 +1117,7 @@
         "name": "CONTROL",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1134,7 +1134,7 @@
         "name": "ALT",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1151,7 +1151,7 @@
         "name": "WINDOWS",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1168,7 +1168,7 @@
         "name": "CONTEXT_MENU",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1185,7 +1185,7 @@
         "name": "LEFT_WINDOWS",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1202,7 +1202,7 @@
         "name": "RIGHT_WINDOWS",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1219,7 +1219,7 @@
         "name": "LEFT_ALT",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1236,7 +1236,7 @@
         "name": "LEFT_CONTROL",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1253,7 +1253,7 @@
         "name": "LEFT_SHIFT",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1270,7 +1270,7 @@
         "name": "UP",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1287,7 +1287,7 @@
         "name": "DOWN",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1304,7 +1304,7 @@
         "name": "LEFT",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1321,7 +1321,7 @@
         "name": "RIGHT",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },
@@ -1338,7 +1338,7 @@
         "name": "NUMPAD_0",
         "order": 1,
         "repeatInterval": 100,
-        "times": 1
+        "repeatTimes": 1
       }
     ]
   },

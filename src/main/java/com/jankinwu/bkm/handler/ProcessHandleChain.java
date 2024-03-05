@@ -50,14 +50,14 @@ public class ProcessHandleChain extends AbstractBulletResponseHandlerChain {
             e.printStackTrace();
         }
 
-        for (int i = 0; i < stage.getTimes(); i++) {
+        for (int i = 0; i < stage.getRepeatTimes(); i++) {
             if (stage.isMouse()) {
                 mouseHandler.execute(stage);
             } else {
                 keyboardHandler.execute(stage);
             }
             // 执行间隔
-            if (i < stage.getTimes() - 1) {
+            if (i < stage.getRepeatTimes() - 1) {
                 try {
                     Thread.sleep(stage.getRepeatInterval());
                 } catch (InterruptedException e) {

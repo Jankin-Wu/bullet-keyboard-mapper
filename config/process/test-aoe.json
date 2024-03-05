@@ -6,9 +6,9 @@
         "order": 1,
         "name": "靶场",
         "intervalBefore": 200,
-        "intervalAfter": 35,
-        "repeatInterval": 30,
-        "times": 1,
+        "intervalAfter": 100,
+        "repeatInterval": 100,
+        "repeatTimes": 1,
         "holdTime": 0,
         "keys": [
           "DIGIT_1"
@@ -20,7 +20,7 @@
         "intervalBefore": 100,
         "intervalAfter": 100,
         "repeatInterval": 100,
-        "times": 1,
+        "repeatTimes": 1,
         "holdTime": 0,
         "keys": [
           "NUMPAD_2"
@@ -32,7 +32,7 @@
         "intervalBefore": 100,
         "intervalAfter": 100,
         "repeatInterval": 100,
-        "times": 1,
+        "repeatTimes": 1,
         "holdTime": 0,
         "keys": [
           "NUMPAD_1"
