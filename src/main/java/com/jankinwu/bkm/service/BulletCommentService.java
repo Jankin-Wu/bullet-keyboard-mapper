@@ -2,15 +2,13 @@ package com.jankinwu.bkm.service;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
-import com.jankinwu.bkm.config.BasicConfig;
-import com.jankinwu.bkm.handler.LimitRateHandlerChain;
-import com.jankinwu.bkm.handler.ProcessMappingHandlerChain;
 import com.jankinwu.bkm.handler.DelayTaskHandlerChain;
+import com.jankinwu.bkm.handler.LimitRateHandlerChain;
 import com.jankinwu.bkm.handler.ProcessHandleChain;
+import com.jankinwu.bkm.handler.ProcessMappingHandlerChain;
 import com.jankinwu.bkm.pojo.dto.RequestProcessContext;
 import com.jankinwu.bkm.pojo.request.BulletCommentRequest;
 import com.jankinwu.bkm.pojo.request.BulletCommentRequestData;
-import com.jankinwu.bkm.queue.DelayedTaskManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,26 +23,21 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class BulletCommentService {
     
-    private final ProcessMappingHandlerChain bulletCommentHandler;
+    private final ProcessMappingHandlerChain processMappingHandlerChain;
 
     private final ProcessHandleChain processHandleChain;
-
-    private final DelayedTaskManager delayedTaskManager;
 
     private final DelayTaskHandlerChain delayTaskHandlerChain;
 
     private final LimitRateHandlerChain limitRateHandlerChain;
 
-    private final BasicConfig basicConfig;
-
     public void handle(String content) {
         BulletCommentRequest request = parseRequest(content);
         RequestProcessContext context = new RequestProcessContext(request);
-        limitRateHandlerChain.setNext(bulletCommentHandler);
-        bulletCommentHandler.setNext(delayTaskHandlerChain);
+        limitRateHandlerChain.setNext(processMappingHandlerChain);
+        processMappingHandlerChain.setNext(delayTaskHandlerChain);
         delayTaskHandlerChain.setNext(processHandleChain);
         limitRateHandlerChain.doChain(context);
-
     }
 
 
