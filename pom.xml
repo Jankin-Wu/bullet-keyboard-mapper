@@ -11,7 +11,7 @@
     <groupId>com.jankinwu</groupId>
     <artifactId>bullet-key-mapper</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>bullet-key-mapper</name>
+    <name>bullet-keyboard-mapper</name>
     <description>基于 websocket + jna 的弹幕-键盘映射器</description>
     <properties>
         <java.version>17</java.version>
