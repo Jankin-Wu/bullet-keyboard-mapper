@@ -1,10 +1,12 @@
 package com.jankinwu.bkm.ws;
 
 import com.jankinwu.bkm.enums.PluginEnum;
+import com.jankinwu.bkm.hints.PluginWebSocketSeverRuntimeHints;
 import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.ImportRuntimeHints;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -19,6 +21,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 @ServerEndpoint("/websocket/plugin/{pluginCode}")
 @Component
 @Slf4j
+@ImportRuntimeHints({PluginWebSocketSeverRuntimeHints.class})
 public class PluginWebSocketSever {
 
     // session集合,存放对应的session
