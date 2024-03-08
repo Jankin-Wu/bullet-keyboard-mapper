@@ -40,6 +40,9 @@ public class ProcessHandleChain extends AbstractBulletResponseHandlerChain {
             }
         }
         log.info("用户[{}]的任务[{}]执行完毕", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
+        if (getNext() != null) {
+            getNext().doChain(context);
+        }
     }
 
     private void executeStage(Stage stage) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
