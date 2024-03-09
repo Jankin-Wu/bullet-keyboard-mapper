@@ -24,3 +24,15 @@ app:
     queue-capacity: 100
     # 拒绝策略，默认 abort-new 抛弃新任务，填其他则抛弃队列中最早添加即将要执行的任务
     rejection-policy: abort-new
+  # 推送插件信息相关配置
+  push:
+    msg:
+      # 文字填充色
+      fill: "#FFC107"
+      # 字体
+      fontFamily: Source Han Sans
+      # 字体大小
+      fontSize: 40
+      # 描边颜色
+      stroke: "#000000"
+#      type: shadow

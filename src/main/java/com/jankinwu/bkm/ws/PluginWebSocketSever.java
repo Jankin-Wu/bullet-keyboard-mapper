@@ -1,7 +1,9 @@
 package com.jankinwu.bkm.ws;
 
+import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.enums.PluginEnum;
 import com.jankinwu.bkm.hints.PluginWebSocketSeverRuntimeHints;
+import com.jankinwu.bkm.pojo.dto.PushMsgDTO;
 import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
@@ -76,7 +78,7 @@ public class PluginWebSocketSever {
     @OnClose
     public void onClose() {
         webSocketSet.remove(this);
-        sendAllMessage("连接关闭");
+//        sendAllMessage("连接关闭");
         log.info("连接断开,当前在线组件数为：{}", webSocketSet.size());
     }
 
@@ -97,13 +99,34 @@ public class PluginWebSocketSever {
      * @param message 发送的消息
      */
     public void sendMessageByPlugin(Integer pluginCode, String message) {
-        log.info("pluginCode：" + pluginCode + ",推送内容：" + message);
+        String pluginName = PluginEnum.getName(pluginCode);
+        log.info("pluginName：" + pluginName + ", 推送内容：" + message);
         Session session = sessionPool.get(pluginCode);
         if (Objects.isNull(session)) {
             return;
         }
         try {
             session.getBasicRemote().sendText(message);
+        } catch (IOException e) {
+            log.error("推送消息到指定组件发生错误：" + e.getMessage(), e);
+        }
+    }
+
+    /**
+     * 推送消息到指定用户
+     *
+     * @param pluginCode  用户ID
+     * @param dto 发送的消息实体
+     */
+    public void sendMessageByPlugin(Integer pluginCode, PushMsgDTO dto) {
+        String pluginName = PluginEnum.getName(pluginCode);
+        log.info("推送组件：{}，推送内容：{}", pluginName, dto.getText());
+        Session session = sessionPool.get(pluginCode);
+        if (Objects.isNull(session)) {
+            return;
+        }
+        try {
+            session.getBasicRemote().sendText(JSONObject.toJSONString(dto));
         } catch (IOException e) {
             log.error("推送消息到指定组件发生错误：" + e.getMessage(), e);
         }

@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2024/3/9 2:59
  */
 @Data
-public class TextEntity {
+public class PushMsgDTO {
 
     private String text;
     private String fontSize;
@@ -16,4 +16,5 @@ public class TextEntity {
     private String stroke;
     private String fontFamily;
     private String type;
+    private String avatarUrl;
 }
