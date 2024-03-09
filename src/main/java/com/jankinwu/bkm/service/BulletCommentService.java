@@ -28,7 +28,7 @@ public class BulletCommentService {
 
     private final LimitRateHandlerChain limitRateHandlerChain;
 
-    private final ExecutionInfoPushHandlerChain executionInfoPushHandlerChain;
+    private final PushMsgHandlerChain pushMsgHandlerChain;
 
     public void handle(String content) {
         BulletCommentRequest request = parseRequest(content);
@@ -36,7 +36,7 @@ public class BulletCommentService {
         limitRateHandlerChain.setNext(processMappingHandlerChain);
         processMappingHandlerChain.setNext(delayTaskHandlerChain);
         delayTaskHandlerChain.setNext(processHandleChain);
-        processHandleChain.setNext(executionInfoPushHandlerChain);
+        processHandleChain.setNext(pushMsgHandlerChain);
         limitRateHandlerChain.doChain(context);
     }
 
