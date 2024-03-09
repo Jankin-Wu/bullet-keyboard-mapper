@@ -1,9 +1,7 @@
 package com.jankinwu.bkm.ws;
 
-import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.enums.PluginEnum;
 import com.jankinwu.bkm.hints.PluginWebSocketSeverRuntimeHints;
-import com.jankinwu.bkm.pojo.dto.TextEntity;
 import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
