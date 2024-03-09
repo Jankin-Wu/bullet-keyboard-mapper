@@ -65,7 +65,7 @@ public class ProcessCache {
                             String content = Files.readString(p);
                             List<ProcessData> processesInFile;
                             try {
-                                processesInFile = parseProcessData(content);
+                                processesInFile = ProcessData.parseJsonArray(content);
                             } catch (Exception e) {
                                 throw new RuntimeException("process文件解析异常，请检查文件内容格式是否正确，请修正后重启应用。");
                             }
@@ -86,51 +86,5 @@ public class ProcessCache {
             log.error("按键执行计划加载失败: {}", ex.getMessage());
         }
         log.info("按键执行计划加载完成！已加载执行计划数量：{}", processMap.size());
-    }
-
-    /**
-     * 由于使用native方式打包时候不支持反射，这里采用手动解析的方式
-     *
-     * @param content process content
-     * @return List<ProcessData>
-     */
-    private List<ProcessData> parseProcessData(String content) {
-        JSONArray jsonArray = JSON.parseArray(content);
-        List<ProcessData> processDataList = new ArrayList<>();
-
-        for (int i = 0; i < jsonArray.size(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            ProcessData processData = new ProcessData();
-            processData.setProcessName(jsonObject.getString("processName"));
-
-            JSONArray stagesArray = jsonObject.getJSONArray("stages");
-            List<Stage> stageList = new ArrayList<>();
-
-            for (int j = 0; j < stagesArray.size(); j++) {
-                JSONObject stageObject = stagesArray.getJSONObject(j);
-                Stage stage = new Stage();
-                stage.setOrder(stageObject.getIntValue("order"));
-                stage.setName(stageObject.getString("name"));
-                stage.setIntervalBefore(stageObject.getIntValue("intervalBefore"));
-                stage.setIntervalAfter(stageObject.getIntValue("intervalAfter"));
-                stage.setRepeatInterval(stageObject.getIntValue("repeatInterval"));
-                stage.setRepeatTimes(stageObject.getIntValue("repeatTimes"));
-                stage.setHoldTime(stageObject.getIntValue("holdTime"));
-                stage.setMouse(stageObject.getBooleanValue("isMouse"));
-
-                JSONArray keysArray = stageObject.getJSONArray("keys");
-                List<String> keysList = new ArrayList<>();
-                for (int k = 0; k < keysArray.size(); k++) {
-                    keysList.add(keysArray.getString(k));
-                }
-                stage.setKeys(keysList);
-
-                stageList.add(stage);
-            }
-
-            processData.setStages(stageList);
-            processDataList.add(processData);
-        }
-        return processDataList;
     }
 }
