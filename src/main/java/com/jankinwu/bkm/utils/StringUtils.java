@@ -13,6 +13,7 @@ import java.util.Map;
 public class StringUtils extends StrUtil {
 
     public static String replacePlaceholders(String input, Map<String, String> parameters) {
+        input = input.replace("\\", "");
         for (Map.Entry<String, String> entry : parameters.entrySet()) {
             String placeholder = "\\$\\{" + entry.getKey() + "\\}";
             String value = entry.getValue();
