@@ -1,7 +1,7 @@
 package com.jankinwu.bkm.handler;
 
 import cn.hutool.core.util.StrUtil;
-import com.jankinwu.bkm.config.BasicConfig;
+import com.jankinwu.bkm.config.AppConfig;
 import com.jankinwu.bkm.enums.KeySimMethodEnum;
 import com.jankinwu.bkm.pojo.domain.Stage;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class KeyboardHandler {
 
-    private final BasicConfig basicConfig;
+    private final AppConfig appConfig;
 
     public void execute(Stage stage) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         // 按照顺序按下键
@@ -46,7 +46,7 @@ public class KeyboardHandler {
         // 执行按下key的操作
         if (StrUtil.isNotBlank(key)) {
             // 获取相应模拟键盘工具类并触发按键
-            Class<?> simUtils = KeySimMethodEnum.getSimUtils(basicConfig.getSimMethod());
+            Class<?> simUtils = KeySimMethodEnum.getSimUtils(appConfig.getSimMethod());
             if (Objects.nonNull(simUtils)) {
                 Method method = simUtils.getMethod("press", String.class);
                 method.invoke(null, key);
@@ -58,7 +58,7 @@ public class KeyboardHandler {
         // 执行释放key的操作
         if (StrUtil.isNotBlank(key)) {
             // 获取相应模拟键盘工具类并触发按键
-            Class<?> simUtils = KeySimMethodEnum.getSimUtils(basicConfig.getSimMethod());
+            Class<?> simUtils = KeySimMethodEnum.getSimUtils(appConfig.getSimMethod());
             if (Objects.nonNull(simUtils)) {
                 Method method = simUtils.getMethod("release", String.class);
                 method.invoke(null, key);

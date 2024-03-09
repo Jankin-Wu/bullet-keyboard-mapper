@@ -2,7 +2,7 @@ package com.jankinwu.bkm.service;
 
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import com.jankinwu.bkm.config.BasicConfig;
+import com.jankinwu.bkm.config.AppConfig;
 import com.jankinwu.bkm.handler.ConfigHandler;
 import com.jankinwu.bkm.listener.WebsocketListener;
 import com.jankinwu.bkm.request.SendRequest;
@@ -26,7 +26,7 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class BulletCommentServerService {
 
-    public final BasicConfig basicConfig;
+    public final AppConfig appConfig;
 
     private final BulletCommentService bulletCommentService;
 
@@ -36,13 +36,13 @@ public class BulletCommentServerService {
     public void run() {
         try {
 //            BulletService.basicConfig = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
-            if (Objects.isNull(basicConfig)) {
+            if (Objects.isNull(appConfig)) {
                 throw new RuntimeException("读取不到配置");
             }
-            configHandler.verifyConfig(basicConfig);
-            SendRequest p = new SendRequest(basicConfig.getAppId(), basicConfig.getAccessKey(), basicConfig.getAccessSecret());
+            configHandler.verifyConfig(appConfig);
+            SendRequest p = new SendRequest(appConfig.getAppId(), appConfig.getAccessKey(), appConfig.getAccessSecret());
             //获取弹幕服务信息
-            String result = p.start(basicConfig.getIdCode());
+            String result = p.start(appConfig.getIdCode());
 //            log.info("弹幕服务信息：{}", result);
             log.info("弹幕服务信息：" + result);
             JSONObject data = JSONObject.parseObject(result).getJSONObject("data");

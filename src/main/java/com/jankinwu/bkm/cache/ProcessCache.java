@@ -4,7 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
-import com.jankinwu.bkm.config.BasicConfig;
+import com.jankinwu.bkm.config.AppConfig;
 import com.jankinwu.bkm.executors.AsyncTaskExecutor;
 import com.jankinwu.bkm.pojo.domain.ProcessData;
 import com.jankinwu.bkm.pojo.domain.Stage;
@@ -34,7 +34,7 @@ import java.util.stream.Stream;
 @Component
 public class ProcessCache {
 
-    private final BasicConfig basicConfig;
+    private final AppConfig appConfig;
 
     private Map<String, ProcessData> processMap;
 
@@ -46,11 +46,11 @@ public class ProcessCache {
     }
 
     private void loadProcess() {
-        if (Objects.isNull(basicConfig)) {
+        if (Objects.isNull(appConfig)) {
             log.error("配置文件获取失败");
         }
         log.info("开始加载按键执行计划。。。");
-        String processDir = basicConfig.getProcessDir();
+        String processDir = appConfig.getProcessDir();
         if (StrUtil.isBlank(processDir)) {
             log.error("执行计划目录不能为空");
         }

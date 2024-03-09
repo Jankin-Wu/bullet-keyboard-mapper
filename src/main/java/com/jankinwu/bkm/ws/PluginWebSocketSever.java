@@ -1,7 +1,9 @@
 package com.jankinwu.bkm.ws;
 
+import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.enums.PluginEnum;
 import com.jankinwu.bkm.hints.PluginWebSocketSeverRuntimeHints;
+import com.jankinwu.bkm.pojo.dto.TextEntity;
 import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
@@ -10,6 +12,7 @@ import org.springframework.context.annotation.ImportRuntimeHints;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 
@@ -98,6 +101,9 @@ public class PluginWebSocketSever {
     public void sendMessageByPlugin(Integer pluginCode, String message) {
         log.info("pluginCode：" + pluginCode + ",推送内容：" + message);
         Session session = sessionPool.get(pluginCode);
+        if (Objects.isNull(session)) {
+            return;
+        }
         try {
             session.getBasicRemote().sendText(message);
         } catch (IOException e) {
@@ -119,6 +125,11 @@ public class PluginWebSocketSever {
                 log.error("群发消息发生错误：" + e.getMessage(), e);
             }
         }
+    }
+
+    public boolean isConnecting(Integer pluginCode) {
+        Session session = sessionPool.get(pluginCode);
+        return Objects.nonNull(session);
     }
 
 }

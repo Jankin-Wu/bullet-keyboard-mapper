@@ -6,7 +6,7 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.cache.ProcessCache;
-import com.jankinwu.bkm.config.BasicConfig;
+import com.jankinwu.bkm.config.AppConfig;
 import com.jankinwu.bkm.hints.BulletHandlerRuntimeHints;
 import com.jankinwu.bkm.hints.KeyboardSimuRuntimeHints;
 import com.jankinwu.bkm.pojo.domain.ProcessData;
@@ -40,7 +40,7 @@ public class ProcessMappingHandlerChain extends AbstractBulletResponseHandlerCha
     public static final String FILE_NAME = "keyMapping.json";
 
     @Autowired
-    private BasicConfig basicConfig;
+    private AppConfig appConfig;
 
     @Autowired
     private ProcessCache processCache;
@@ -56,8 +56,15 @@ public class ProcessMappingHandlerChain extends AbstractBulletResponseHandlerCha
         }
         // 根据是否忽略大小写匹配执行计划
         ProcessData processData = map.entrySet().stream()
-                .filter(entry -> StrUtil.equals(entry.getKey(), msg, basicConfig.getIgnoreCase()))
-                .map(entry -> processCache.getProcessMap().get(entry.getValue()))
+                .filter(entry -> StrUtil.equals(entry.getKey(), msg, appConfig.getIgnoreCase()))
+                .map(entry -> {
+                    ProcessData data = processCache.getProcessMap().get(entry.getValue());
+                    if (data == null) {
+                        log.error("未匹配到对应的执行计划：[{}]", entry.getValue());
+                    }
+                    return data;
+                })
+                .filter(Objects::nonNull)
                 .findFirst()
                 .orElse(null);
         if (Objects.isNull(processData)) {
@@ -78,7 +85,7 @@ public class ProcessMappingHandlerChain extends AbstractBulletResponseHandlerCha
             if (CollUtil.isNotEmpty(map)) {
                 return;
             }
-            File externalFile = new File(basicConfig.getMappingFilePath());
+            File externalFile = new File(appConfig.getMappingFilePath());
             // 检查外部目录是否存在keyMapping.json文件，如果有就使用外部的映射文件
             if (externalFile.exists()) {
                 try (InputStream inputStream = new FileInputStream(externalFile)) {

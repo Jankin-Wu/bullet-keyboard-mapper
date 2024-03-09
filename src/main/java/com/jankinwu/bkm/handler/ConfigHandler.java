@@ -1,7 +1,7 @@
 package com.jankinwu.bkm.handler;
 
 import cn.hutool.core.util.StrUtil;
-import com.jankinwu.bkm.config.BasicConfig;
+import com.jankinwu.bkm.config.AppConfig;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -14,20 +14,20 @@ import java.util.Objects;
 @Service
 public class ConfigHandler {
 
-    public void verifyConfig(BasicConfig basicConfig) {
-        if (StrUtil.isBlank(basicConfig.getAccessKey())) {
+    public void verifyConfig(AppConfig appConfig) {
+        if (StrUtil.isBlank(appConfig.getAccessKey())) {
             throw new RuntimeException("access_key 不能为空");
         }
 
-        if (StrUtil.isBlank(basicConfig.getAccessSecret())) {
+        if (StrUtil.isBlank(appConfig.getAccessSecret())) {
             throw new RuntimeException("access_secret 不能为空");
         }
 
-        if (Objects.isNull(basicConfig.getAppId())) {
+        if (Objects.isNull(appConfig.getAppId())) {
             throw new RuntimeException("appId 不能为空");
         }
 
-        if (StrUtil.isBlank(basicConfig.getIdCode())) {
+        if (StrUtil.isBlank(appConfig.getIdCode())) {
             throw new RuntimeException("身份码不能为空");
         }
     }

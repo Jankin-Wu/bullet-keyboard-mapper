@@ -1,5 +1,6 @@
 package com.jankinwu.bkm;
 
+import cn.hutool.core.util.ReUtil;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.pojo.domain.Stage;
@@ -144,5 +145,28 @@ public class JsonTest {
 
         String resultJsonString = JSON.toJSONString(result);
         System.out.println(resultJsonString);
+    }
+
+    public static String replacePlaceholders(String input, Map<String, String> parameters) {
+        for (Map.Entry<String, String> entry : parameters.entrySet()) {
+            String placeholder = "\\$\\{" + entry.getKey() + "\\}";
+            String value = entry.getValue();
+            input = ReUtil.replaceAll(input, placeholder, value);
+        }
+
+        return input;
+    }
+
+    @Test
+    void testStringReplace() {
+        String input = "用户${uname}派出了${processName}";
+
+        // 模拟接收到的参数
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("uname", "John");
+        parameters.put("processName", "Process X");
+
+        String output = replacePlaceholders(input, parameters);
+        System.out.println(output);
     }
 }

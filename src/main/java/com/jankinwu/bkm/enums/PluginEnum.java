@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * @author wwg
+ * @author jankinwu
  * @description 组件枚举
  * @date 2024/3/8 1:09
  */

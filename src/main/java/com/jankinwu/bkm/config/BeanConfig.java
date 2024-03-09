@@ -13,11 +13,11 @@ import java.util.concurrent.RejectedExecutionHandler;
 
 /**
  * @author jankinwu
- * @description
+ * @description bean 注册相关配置
  * @date 2024/3/2 1:25
  */
 @Configuration
-public class CommonConfig {
+public class BeanConfig {
 
     @Bean
     public BulletHandlerRuntimeHints hintsRegistrar() {

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "app")
-public class BasicConfig {
+public class AppConfig {
 
     private String idCode;
 
@@ -34,4 +34,6 @@ public class BasicConfig {
     private String processDir;
 
     private Integer delayTime = 1000;
+
+    private String executionFormatString;
 }
