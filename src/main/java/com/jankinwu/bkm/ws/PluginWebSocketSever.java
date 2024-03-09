@@ -127,6 +127,7 @@ public class PluginWebSocketSever {
         }
         try {
             session.getBasicRemote().sendText(dto.toJsonString());
+
         } catch (IOException e) {
             log.error("推送消息到指定组件发生错误：" + e.getMessage(), e);
         }
