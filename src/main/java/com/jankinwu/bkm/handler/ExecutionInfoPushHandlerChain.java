@@ -30,13 +30,13 @@ public class ExecutionInfoPushHandlerChain extends AbstractBulletResponseHandler
     public void doChain(RequestProcessContext context) {
         if (pluginWebSocketSever.isConnecting(PluginEnum.BULLET_COMMENT.getCode())) {
             Map<String, String> paramMap = assembleMap(context);
+            String msg;
             if (StringUtils.isNotBlank(appConfig.getExecutionFormatString())) {
-                StringUtils.replacePlaceholders(appConfig.getExecutionFormatString(), paramMap);
-
+                msg = StringUtils.replacePlaceholders(appConfig.getExecutionFormatString(), paramMap);
             } else {
-                String msg = "[" + context.getRequest().getData().getUname() + "]" + "执行操作：" + context.getProcess().getProcessName();
-                pluginWebSocketSever.sendMessageByPlugin(PluginEnum.BULLET_COMMENT.getCode(), msg);
+                msg = "[" + context.getRequest().getData().getUname() + "]" + "执行操作：" + context.getProcess().getProcessName();
             }
+            pluginWebSocketSever.sendMessageByPlugin(PluginEnum.BULLET_COMMENT.getCode(), msg);
         }
         if (getNext() != null) {
             getNext().doChain(context);
