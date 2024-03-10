@@ -1,6 +1,5 @@
 package com.jankinwu.bkm.ws;
 
-import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.enums.PluginEnum;
 import com.jankinwu.bkm.hints.PluginWebSocketSeverRuntimeHints;
 import com.jankinwu.bkm.pojo.dto.PushMsgDTO;
@@ -46,7 +45,6 @@ public class PluginWebSocketSever {
         log.info("WebSocket建立连接中,连接组件名称：{}", pluginName);
         try {
             Session historySession = sessionPool.get(pluginCode);
-            // historySession不为空,说明已经有人登陆账号,应该删除登陆的WebSocket对象
             if (historySession != null) {
                 webSocketSet.remove(historySession);
                 historySession.close();
@@ -95,7 +93,7 @@ public class PluginWebSocketSever {
     /**
      * 推送消息到指定用户
      *
-     * @param pluginCode  用户ID
+     * @param pluginCode  插件ID
      * @param message 发送的消息
      */
     public void sendMessageByPlugin(Integer pluginCode, String message) {
@@ -115,7 +113,7 @@ public class PluginWebSocketSever {
     /**
      * 推送消息到指定用户
      *
-     * @param pluginCode  用户ID
+     * @param pluginCode  插件ID
      * @param dto 发送的消息实体
      */
     public void sendMessageByPlugin(Integer pluginCode, PushMsgDTO dto) {
