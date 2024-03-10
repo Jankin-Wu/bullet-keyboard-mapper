@@ -18,7 +18,7 @@ app:
   # 执行信息弹幕上想显示的文本格式，${}中为动态替换的字段
   executionFormatString: 用户\[\$\{uname\}\]执行操作：\$\{processName\}
   scheduled:
-    # 每次执行process运行间隔
+    # 每次执行process的间隔时间，单位：ms
     execution-interval: 1000
     # 工作队列容量
     queue-capacity: 100

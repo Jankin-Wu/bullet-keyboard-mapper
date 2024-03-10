@@ -4,7 +4,7 @@ import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.config.AppConfig;
 import com.jankinwu.bkm.handler.ConfigHandler;
-import com.jankinwu.bkm.listener.WebsocketListener;
+import com.jankinwu.bkm.ws.BulletCommentWebsocketListener;
 import com.jankinwu.bkm.request.SendRequest;
 import jakarta.annotation.PostConstruct;
 import jakarta.websocket.ContainerProvider;
@@ -28,14 +28,13 @@ public class BulletCommentServerService {
 
     public final AppConfig appConfig;
 
-    private final BulletCommentService bulletCommentService;
-
     private final ConfigHandler configHandler;
+
+    private final BulletCommentWebsocketListener bulletCommentWebsocketListener;
 
     @PostConstruct
     public void run() {
         try {
-//            BulletService.basicConfig = ConfigUtils.getConfig("config-dev.yml", BasicConfig.class);
             if (Objects.isNull(appConfig)) {
                 throw new RuntimeException("读取不到配置");
             }
@@ -43,7 +42,6 @@ public class BulletCommentServerService {
             SendRequest p = new SendRequest(appConfig.getAppId(), appConfig.getAccessKey(), appConfig.getAccessSecret());
             //获取弹幕服务信息
             String result = p.start(appConfig.getIdCode());
-//            log.info("弹幕服务信息：{}", result);
             log.info("弹幕服务信息：" + result);
             JSONObject data = JSONObject.parseObject(result).getJSONObject("data");
             if (Objects.isNull(data)) {
@@ -60,13 +58,11 @@ public class BulletCommentServerService {
             //选一个服务器节点
             String uri = wssLinks.getString(0);
             WebSocketContainer container = ContainerProvider.getWebSocketContainer();
+            bulletCommentWebsocketListener.setAuthBody(authBody);
             // 连接到WebSocket服务器
-            container.connectToServer(new WebsocketListener(authBody, bulletCommentService), new URI(uri));
+            container.connectToServer(bulletCommentWebsocketListener, new URI(uri));
         } catch (Exception e) {
-//            ErrorDialog.displayErrorMessage(e.getMessage());
             log.error("运行异常：{}", e.getMessage());
-            // 在点击对话框确定按钮后退出应用程序
-//            System.exit(1);
         }
     }
 }
