@@ -1,11 +1,11 @@
-package com.jankinwu.bkm.listener;
+package com.jankinwu.bkm.ws;
 
 import cn.hutool.core.util.ZipUtil;
 import com.jankinwu.bkm.hints.WebsocketListenerRuntimeHints;
 import com.jankinwu.bkm.service.BulletCommentService;
 import jakarta.websocket.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.ImportRuntimeHints;
 import org.springframework.stereotype.Service;
@@ -27,13 +27,13 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Service
 @ClientEndpoint
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
+@RequiredArgsConstructor
 @ImportRuntimeHints(WebsocketListenerRuntimeHints.class)
-public class WebsocketListener {
+public class BulletCommentWebsocketListener {
     private String authBody;
 
-    private BulletCommentService bulletCommentService;
+    private final BulletCommentService bulletCommentService;
 
     @OnOpen
     public void onOpen(Session session) throws IOException {

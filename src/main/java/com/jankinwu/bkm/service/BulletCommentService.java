@@ -1,11 +1,8 @@
 package com.jankinwu.bkm.service;
 
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.handler.*;
 import com.jankinwu.bkm.pojo.dto.RequestProcessContext;
 import com.jankinwu.bkm.pojo.request.BulletCommentRequest;
-import com.jankinwu.bkm.pojo.request.BulletCommentRequestData;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
