@@ -7,6 +7,7 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author jankinwu
@@ -41,15 +42,21 @@ public class ProcessData {
             for (int j = 0; j < stagesArray.size(); j++) {
                 JSONObject stageObject = stagesArray.getJSONObject(j);
                 Stage stage = new Stage();
-                stage.setOrder(stageObject.getIntValue("order"));
+                if (stageObject.getIntValue("order") != 0) {
+                    stage.setOrder(stageObject.getIntValue("order"));
+                }
                 stage.setName(stageObject.getString("name"));
                 stage.setIntervalBefore(stageObject.getIntValue("intervalBefore"));
                 stage.setIntervalAfter(stageObject.getIntValue("intervalAfter"));
                 stage.setRepeatInterval(stageObject.getIntValue("repeatInterval"));
-                stage.setRepeatTimes(stageObject.getIntValue("repeatTimes"));
+                if (stageObject.getIntValue("repeatTimes") != 0) {
+                    stage.setRepeatTimes(stageObject.getIntValue("repeatTimes"));
+                }
                 stage.setHoldTime(stageObject.getIntValue("holdTime"));
                 stage.setMouse(stageObject.getBooleanValue("isMouse"));
-                stage.setCoordinate(Coordinate.parseCoordinate(stageObject.getJSONObject("coordinate") == null? "" : stageObject.getJSONObject("coordinate").toJSONString()));
+                if (Objects.nonNull(stageObject.getJSONObject("coordinate"))) {
+                    stage.setCoordinate(Coordinate.parseCoordinate(stageObject.getJSONObject("coordinate").toJSONString()));
+                }
                 stage.setScroll(stageObject.getBooleanValue("isScroll"));
                 stage.setScrollAmount(stageObject.getIntValue("scrollAmount"));
                 JSONArray keysArray = stageObject.getJSONArray("keys");
