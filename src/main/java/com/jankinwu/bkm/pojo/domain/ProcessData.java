@@ -49,7 +49,9 @@ public class ProcessData {
                 stage.setRepeatTimes(stageObject.getIntValue("repeatTimes"));
                 stage.setHoldTime(stageObject.getIntValue("holdTime"));
                 stage.setMouse(stageObject.getBooleanValue("isMouse"));
-
+                stage.setCoordinate(Coordinate.parseCoordinate(stageObject.getJSONObject("coordinate") == null? "" : stageObject.getJSONObject("coordinate").toJSONString()));
+                stage.setScroll(stageObject.getBooleanValue("isScroll"));
+                stage.setScrollAmount(stageObject.getIntValue("scrollAmount"));
                 JSONArray keysArray = stageObject.getJSONArray("keys");
                 List<String> keysList = new ArrayList<>();
                 for (int k = 0; k < keysArray.size(); k++) {
