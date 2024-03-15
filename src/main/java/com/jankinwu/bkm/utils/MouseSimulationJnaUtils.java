@@ -48,11 +48,14 @@ public class MouseSimulationJnaUtils {
 
         int wheelTimes;
         if (amount > 0) {
-            wheelTimes = Math.abs((int) Math.ceil(amount / (double) SCROLL_AMOUNT_PER_NOTCH)); // 正数向上取整
+            // 正数向上取整
+            wheelTimes = Math.abs((int) Math.ceil(amount / (double) SCROLL_AMOUNT_PER_NOTCH));
         } else {
-            wheelTimes = Math.abs((int) Math.floor(amount / (double) SCROLL_AMOUNT_PER_NOTCH)); // 负数向下取整
+            // 负数向下取整
+            wheelTimes = Math.abs((int) Math.floor(amount / (double) SCROLL_AMOUNT_PER_NOTCH));
         }
-        int wheelDelta = direction * WHEEL_DELTA; // 计算滚动距离
+        // 计算滚动距离
+        int wheelDelta = direction * WHEEL_DELTA;
         for (int i = 0; i < wheelTimes; i++) {
             User32.INSTANCE.mouse_event(MOUSEEVENTF_WHEEL, 0, 0, wheelDelta, 0);
         }
