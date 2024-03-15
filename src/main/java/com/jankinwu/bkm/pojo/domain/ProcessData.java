@@ -61,7 +61,7 @@ public class ProcessData {
                 }else {
                     throw new RuntimeException("非法参数，repeatInterval 只能为0或正整数");
                 }
-                if (stageObject.getIntValue("repeatTimes") != 0) {
+                if (stageObject.getIntValue("repeatTimes") >= 0) {
                     stage.setRepeatTimes(stageObject.getIntValue("repeatTimes"));
                 } else {
                     throw new RuntimeException("非法参数，repeatTimes 只能为0或正整数");
