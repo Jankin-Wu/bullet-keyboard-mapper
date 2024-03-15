@@ -25,5 +25,4 @@ public class AsyncTaskExecutor extends ThreadPoolExecutor {
         super(corePoolSize, maxPoolSize, keepAliveSeconds, TimeUnit.SECONDS, taskQueue);
 //        this.setRejectedExecutionHandler(customRejectedExecutionHandler);
     }
-
 }

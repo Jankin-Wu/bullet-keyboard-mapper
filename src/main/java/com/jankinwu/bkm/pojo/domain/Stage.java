@@ -29,4 +29,10 @@ public class Stage {
     private boolean isMouse = false;
 
     private List<String> keys;
+
+    private Coordinate coordinate;
+
+    private boolean isScroll = false;
+
+    private int scrollAmount;
 }
