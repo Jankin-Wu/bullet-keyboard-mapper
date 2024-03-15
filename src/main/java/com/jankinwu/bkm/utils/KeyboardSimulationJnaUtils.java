@@ -46,7 +46,8 @@ public class KeyboardSimulationJnaUtils {
         if (Objects.nonNull(keyCode)) {
             press(keyCode);
         }else {
-            throw new RuntimeException("匹配不到按键，请检查按键名称是否正确");
+            String errMsg = String.format("匹配不到按键：%s，请检查按键名称是否正确", keyName);
+            throw new RuntimeException(errMsg);
         }
     }
 

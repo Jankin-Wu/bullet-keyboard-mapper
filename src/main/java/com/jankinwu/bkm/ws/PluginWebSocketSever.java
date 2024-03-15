@@ -33,6 +33,8 @@ public class PluginWebSocketSever {
     // 与某个客户端的连接会话，需要通过它来给客户端发送数据
     private Session session;
 
+    private String HELLO_SERVER = "Hello, Server!";
+
     /**
      * 建立WebSocket连接
      *
@@ -86,8 +88,9 @@ public class PluginWebSocketSever {
      * @param message 接收的消息
      */
     @OnMessage
-    public void onMessage(String message) {
+    public void onMessage(String message, @PathParam(value = "pluginCode") Integer pluginCode) {
         log.info("收到客户端发来的消息：{}", message);
+        sendMessageByPlugin(pluginCode, "Hello, Client!");
     }
 
     /**
