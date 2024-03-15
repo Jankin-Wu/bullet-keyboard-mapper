@@ -1,6 +1,6 @@
 package com.jankinwu.bkm.handler;
 
-import com.jankinwu.bkm.config.AppConfig;
+import com.jankinwu.bkm.pojo.domain.Coordinate;
 import com.jankinwu.bkm.pojo.domain.Stage;
 import com.jankinwu.bkm.utils.MouseSimulationJnaUtils;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 public class MouseHandler {
 
     public void execute(Stage stage) {
+        moveMouse(stage.getCoordinate());
         if(stage.isScroll()) {
             handlerScroll(stage);
             return;
@@ -33,6 +34,10 @@ public class MouseHandler {
         }
         log.info("模拟按键：{}", String.join(" + ", stage.getKeys()));
 
+    }
+
+    private void moveMouse(Coordinate coordinate) {
+        MouseSimulationJnaUtils.moveMouseToCoordinate(coordinate.getX(), coordinate.getY());
     }
 
     private void holdTime(int holdTime) {
