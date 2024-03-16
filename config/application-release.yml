@@ -17,6 +17,10 @@ app:
   simMethod: jna
   # 执行信息弹幕上想显示的文本格式，${}中为动态替换的字段
   executionFormatString: 用户\[\$\{uname\}\]执行操作：\$\{processName\}
+  # 过滤不想推送给插件的执行计划名称
+  processesDontPush:
+    - xxx
+    - xxx
   scheduled:
     # 每次执行process的间隔时间，单位：ms
     execution-interval: 1000

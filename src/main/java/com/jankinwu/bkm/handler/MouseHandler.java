@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 /**
  * @author jankinwu
  * @description 处理鼠标操作
@@ -37,7 +39,9 @@ public class MouseHandler {
     }
 
     private void moveMouse(Coordinate coordinate) {
-        MouseSimulationJnaUtils.moveMouseToCoordinate(coordinate.getX(), coordinate.getY());
+        if (Objects.nonNull(coordinate)) {
+            MouseSimulationJnaUtils.moveMouseToCoordinate(coordinate.getX(), coordinate.getY());
+        }
     }
 
     private void holdTime(int holdTime) {
