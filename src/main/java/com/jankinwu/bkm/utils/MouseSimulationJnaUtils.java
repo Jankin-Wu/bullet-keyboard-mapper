@@ -1,15 +1,14 @@
 package com.jankinwu.bkm.utils;
 
 import com.jankinwu.bkm.enums.MouseEventJnaEnum;
-import com.jankinwu.bkm.pojo.domain.Coordinate;
+import com.jankinwu.bkm.hints.MouseSimuRuntimeHints;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.Platform;
-import com.sun.jna.Pointer;
-import com.sun.jna.platform.win32.BaseTSD;
 import com.sun.jna.platform.win32.WinDef;
 import com.sun.jna.platform.win32.WinUser;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.ImportRuntimeHints;
 
 import java.util.Objects;
 
@@ -19,6 +18,7 @@ import java.util.Objects;
  * @date 2024/3/13 21:43
  */
 @Slf4j
+@ImportRuntimeHints(MouseSimuRuntimeHints.class)
 public class MouseSimulationJnaUtils {
 
     private static final int MOUSEEVENTF_WHEEL = 0x0800;

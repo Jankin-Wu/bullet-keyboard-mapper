@@ -19,7 +19,7 @@ public class PluginWebSocketSeverRuntimeHints implements RuntimeHintsRegistrar {
             hints.reflection().registerMethod(PluginWebSocketSever.class.getMethod("onOpen", Session.class, Integer.class), ExecutableMode.INVOKE);
             hints.reflection().registerMethod(PluginWebSocketSever.class.getMethod("onClose"), ExecutableMode.INVOKE);
             hints.reflection().registerMethod(PluginWebSocketSever.class.getMethod("onError", Throwable.class), ExecutableMode.INVOKE);
-            hints.reflection().registerMethod(PluginWebSocketSever.class.getMethod("onMessage", String.class), ExecutableMode.INVOKE);
+            hints.reflection().registerMethod(PluginWebSocketSever.class.getMethod("onMessage", String.class, Integer.class), ExecutableMode.INVOKE);
             hints.reflection().registerConstructor(PluginWebSocketSever.class.getConstructor(), ExecutableMode.INVOKE);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
