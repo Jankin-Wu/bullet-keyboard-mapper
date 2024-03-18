@@ -1,5 +1,6 @@
 package com.jankinwu.bkm.handler;
 
+import cn.hutool.core.collection.CollUtil;
 import com.jankinwu.bkm.config.AppConfig;
 import com.jankinwu.bkm.config.PushMsgConfig;
 import com.jankinwu.bkm.enums.PluginEnum;
@@ -32,6 +33,10 @@ public class PushMsgHandlerChain extends AbstractBulletResponseHandlerChain {
 
     @Override
     public void doChain(RequestProcessContext context) {
+        // 过滤不想推送给插件的 process
+        if (CollUtil.isNotEmpty(appConfig.getProcessesDontPush()) && appConfig.getProcessesDontPush().contains(context.getProcess().getProcessName())) {
+            return;
+        }
         if (pluginWebSocketSever.isConnecting(PluginEnum.BULLET_COMMENT.getCode())) {
             PushMsgDTO dto = assemblePushMsgDTO(context);
             pluginWebSocketSever.sendMessageByPlugin(PluginEnum.BULLET_COMMENT.getCode(), dto);

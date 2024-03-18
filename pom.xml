@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.jankinwu</groupId>
-    <artifactId>bullet-key-mapper</artifactId>
+    <artifactId>bullet-keyboard-mapper</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>bullet-keyboard-mapper</name>
     <description>基于 websocket + jna 的弹幕-键盘映射器</description>
@@ -44,7 +44,7 @@
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-core</artifactId>
-            <version>5.8.21</version>
+            <version>5.8.25</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>

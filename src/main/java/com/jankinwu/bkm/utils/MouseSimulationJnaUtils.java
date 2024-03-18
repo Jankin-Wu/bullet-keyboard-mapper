@@ -1,10 +1,14 @@
 package com.jankinwu.bkm.utils;
 
 import com.jankinwu.bkm.enums.MouseEventJnaEnum;
+import com.jankinwu.bkm.hints.MouseSimuRuntimeHints;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import com.sun.jna.Platform;
+import com.sun.jna.platform.win32.WinDef;
+import com.sun.jna.platform.win32.WinUser;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.ImportRuntimeHints;
 
 import java.util.Objects;
 
@@ -14,6 +18,7 @@ import java.util.Objects;
  * @date 2024/3/13 21:43
  */
 @Slf4j
+@ImportRuntimeHints(MouseSimuRuntimeHints.class)
 public class MouseSimulationJnaUtils {
 
     private static final int MOUSEEVENTF_WHEEL = 0x0800;
@@ -61,9 +66,18 @@ public class MouseSimulationJnaUtils {
         }
     }
 
+    public static void moveMouseToCoordinate(int x, int y) {
+        User32 user32 = User32.INSTANCE;
+        user32.SetCursorPos(x, y);
+    }
+
     public interface User32 extends Library {
         User32 INSTANCE = Native.load(Platform.isWindows() ? "user32" : "c", User32.class);
 
+        int MOUSEEVENTF_MOVE = 0x0001;
         void mouse_event(int dwFlags, int dx, int dy, int dwData, int dwExtraInfo);
+        boolean GetCursorPos(WinDef.POINT lpPoint);
+        boolean SetCursorPos(int x, int y);
+        int SendInput(WinDef.DWORD nInputs, WinUser.INPUT[] pInputs, int cbSize);
     }
 }
