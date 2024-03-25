@@ -47,12 +47,12 @@ public class ProcessData {
                 }
                 stage.setName(stageObject.getString("name"));
                 if (stageObject.getIntValue("intervalBefore") >= 0) {
-                    stage.setRepeatInterval(stageObject.getIntValue("intervalBefore"));
+                    stage.setIntervalBefore(stageObject.getIntValue("intervalBefore"));
                 }else {
                     throw new RuntimeException("非法参数，intervalBefore 只能为0或正整数");
                 }
                 if (stageObject.getIntValue("intervalAfter") >= 0) {
-                    stage.setRepeatInterval(stageObject.getIntValue("intervalAfter"));
+                    stage.setIntervalAfter(stageObject.getIntValue("intervalAfter"));
                 }else {
                     throw new RuntimeException("非法参数，intervalAfter 只能为0或正整数");
                 }

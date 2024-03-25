@@ -30,6 +30,8 @@ public class BulletCommentService {
     public void handle(String content) {
         BulletCommentRequest request = BulletCommentRequest.parseRequest(content);
         RequestProcessContext context = new RequestProcessContext(request);
+        String msg = context.getRequest().getData().getMsg();
+        log.info("[弹幕] {}: {}", context.getRequest().getData().getUname(), msg);
         limitRateHandlerChain.setNext(processMappingHandlerChain);
         processMappingHandlerChain.setNext(delayTaskHandlerChain);
         delayTaskHandlerChain.setNext(processHandleChain);
