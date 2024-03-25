@@ -6,6 +6,7 @@ import com.jankinwu.bkm.pojo.dto.PushMsgDTO;
 import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.ImportRuntimeHints;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 @ServerEndpoint("/websocket/plugin/{pluginCode}")
 @Component
 @Slf4j
+@EqualsAndHashCode
 @ImportRuntimeHints({PluginWebSocketSeverRuntimeHints.class})
 public class PluginWebSocketSever {
 
@@ -38,7 +40,7 @@ public class PluginWebSocketSever {
     /**
      * 建立WebSocket连接
      *
-     * @param session
+     * @param session Session
      * @param pluginCode 组件编码
      */
     @OnOpen
@@ -76,9 +78,16 @@ public class PluginWebSocketSever {
      * 连接关闭
      */
     @OnClose
-    public void onClose() {
+    public void onClose(@PathParam(value = "pluginCode") Integer pluginCode) {
         webSocketSet.remove(this);
-//        sendAllMessage("连接关闭");
+        Session session = sessionPool.remove(pluginCode);
+        if (session != null) {
+            try (Session currentSession = session) {
+                log.info("与{}插件会话关闭，sessionId: {}", PluginEnum.getName(pluginCode), currentSession.getId());
+            } catch (IOException e) {
+                log.error("Error closing WebSocket session", e);
+            }
+        }
         log.info("连接断开,当前在线组件数为：{}", webSocketSet.size());
     }
 
@@ -94,27 +103,27 @@ public class PluginWebSocketSever {
     }
 
     /**
-     * 推送消息到指定用户
+     * 推送消息到指定插件
      *
      * @param pluginCode  插件ID
      * @param message 发送的消息
      */
     public void sendMessageByPlugin(Integer pluginCode, String message) {
         String pluginName = PluginEnum.getName(pluginCode);
-        log.info("pluginName：" + pluginName + ", 推送内容：" + message);
         Session session = sessionPool.get(pluginCode);
         if (Objects.isNull(session)) {
             return;
         }
         try {
             session.getBasicRemote().sendText(message);
+            log.info("Push message to " + pluginName + ", message：" + message);
         } catch (IOException e) {
             log.error("推送消息到指定组件发生错误：" + e.getMessage(), e);
         }
     }
 
     /**
-     * 推送消息到指定用户
+     * 推送消息到指定插件
      *
      * @param pluginCode  插件ID
      * @param dto 发送的消息实体

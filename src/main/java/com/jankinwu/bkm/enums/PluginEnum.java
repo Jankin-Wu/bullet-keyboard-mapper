@@ -12,7 +12,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum PluginEnum {
 
-    BULLET_COMMENT(1, "弹幕组件");
+    BULLET_COMMENT(1, "Bullet Comment");
 
     private final int code;
     private final String name;

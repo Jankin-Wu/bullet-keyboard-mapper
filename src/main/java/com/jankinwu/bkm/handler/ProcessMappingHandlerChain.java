@@ -49,7 +49,6 @@ public class ProcessMappingHandlerChain extends AbstractBulletResponseHandlerCha
     public void doChain(RequestProcessContext context) {
         initMap();
         String msg = context.getRequest().getData().getMsg();
-        log.info("[弹幕] {}: {}", context.getRequest().getData().getUname(), msg);
         if (Objects.isNull(processCache.getProcessMap())) {
             log.error("执行计划获取失败，请检查process文件中的格式是否正确");
             return;
