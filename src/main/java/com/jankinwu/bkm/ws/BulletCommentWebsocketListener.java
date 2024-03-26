@@ -163,8 +163,7 @@ public class BulletCommentWebsocketListener {
             try {
                 bulletCommentService.handle(content);
             } catch (Exception e) {
-                log.info("弹幕处理异常");
-                e.printStackTrace();
+                log.error("弹幕处理异常", e);
             }
         }
         //只存在ZIP包解压时才有的情况
