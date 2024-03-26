@@ -90,8 +90,7 @@ public class ProcessMappingHandlerChain extends AbstractBulletResponseHandlerCha
                 try (InputStream inputStream = new FileInputStream(externalFile)) {
                     readJson(inputStream);
                 } catch (Exception e) {
-                    log.info("映射文件解析异常");
-                    e.printStackTrace();
+                    log.error("映射文件解析异常", e);
                 }
             } else {
                 log.info("检测不到外部映射文件，开始加载内部默认映射文件。。。");

@@ -21,6 +21,7 @@ public class BulletCommentRequestData {
     private String uname;
     private String uface;
     private int dmType;
+    private String openId;
     private String msgId;
     private int roomId;
 }

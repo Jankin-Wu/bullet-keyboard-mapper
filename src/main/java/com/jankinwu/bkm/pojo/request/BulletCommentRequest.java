@@ -36,6 +36,7 @@ public class BulletCommentRequest {
         data.setUname(dataObject.getString("uname"));
         data.setUface(dataObject.getString("uface"));
         data.setDmType(dataObject.getIntValue("dmType"));
+        data.setOpenId(dataObject.getString("open_id"));
         data.setMsgId(dataObject.getString("msgId"));
         data.setRoomId(dataObject.getIntValue("roomId"));
         request.setData(data);
