@@ -37,13 +37,14 @@ public class ProcessMappingHandlerChain extends AbstractBulletResponseHandlerCha
     @Override
     public void doChain(RequestProcessContext context) {
         String msg = context.getCommonData().getMsg();
+        String type = context.getType();
         if (Objects.isNull(processCache.getProcessMap())) {
             log.error("执行计划获取失败，请检查process文件中的格式是否正确");
             return;
         }
         // 根据是否忽略大小写匹配执行计划
         ProcessData processData = keyMappingCache.getKeyProcessMap().entrySet().stream()
-                .filter(entry -> StrUtil.equals(entry.getKey(), msg, appConfig.getIgnoreCase()))
+                .filter(entry -> StrUtil.equals(entry.getKey(), type + ":" + msg, appConfig.getIgnoreCase()))
                 .map(entry -> {
                     ProcessData data = processCache.getProcessMap().get(entry.getValue());
                     if (data == null) {

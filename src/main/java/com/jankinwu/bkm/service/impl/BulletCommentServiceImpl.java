@@ -36,7 +36,7 @@ public class BulletCommentServiceImpl implements LiveMsgService {
         BulletCommentRequest request = BulletCommentRequest.parseRequest(content);
         context.setBulletCommentRequest(request);
         RequestCommonData commonData = new RequestCommonData();
-        BeanUtils.copyProperties(request, commonData);
+        BeanUtils.copyProperties(request.getData(), commonData);
         context.setCommonData(commonData);
         String msg = context.getBulletCommentRequest().getData().getMsg();
         log.info("[弹幕] {}: {}", context.getBulletCommentRequest().getData().getUname(), msg);
