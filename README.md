@@ -80,6 +80,6 @@ mvn native:compile -Pnative -Prelease
 - [ ] 支持更多平台
 - [ ] 支持弹幕消息限流
 - [ ] 可视化交互界面（待定）
-- [ ] 支持获取礼物信息
+- [x] 支持获取礼物信息
   
   More...
