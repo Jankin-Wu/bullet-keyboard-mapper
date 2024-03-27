@@ -34,7 +34,7 @@ public class LiveMsgServiceFactory implements ApplicationContextAware {
     }
 
     /**
-     * 处理直播消息
+     * 处理直播消息，根据 cmd 匹配对应的实现类
      * @param content 消息内容
      */
     public void handle(String content) {
