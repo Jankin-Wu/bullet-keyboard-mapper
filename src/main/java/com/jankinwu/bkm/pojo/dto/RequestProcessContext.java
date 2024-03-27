@@ -12,10 +12,16 @@ import lombok.Data;
 @Data
 public class RequestProcessContext {
 
-    private BulletCommentRequest request;
+    private BulletCommentRequest bulletCommentRequest;
+    private RequestCommonData commonData;
     private ProcessData process;
+    private String type;
 
-    public RequestProcessContext(BulletCommentRequest request) {
-        this.request = request;
+    public RequestProcessContext(BulletCommentRequest bulletCommentRequest) {
+        this.bulletCommentRequest = bulletCommentRequest;
+    }
+
+    public RequestProcessContext(String type) {
+        this.type = type;
     }
 }

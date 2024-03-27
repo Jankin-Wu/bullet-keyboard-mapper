@@ -2,7 +2,7 @@ package com.jankinwu.bkm.ws;
 
 import cn.hutool.core.util.ZipUtil;
 import com.jankinwu.bkm.hints.WebsocketListenerRuntimeHints;
-import com.jankinwu.bkm.service.BulletCommentService;
+import com.jankinwu.bkm.service.factory.LiveMsgServiceFactory;
 import jakarta.websocket.*;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 public class BulletCommentWebsocketListener {
     private String authBody;
 
-    private final BulletCommentService bulletCommentService;
+    private final LiveMsgServiceFactory liveMsgServiceFactory;
 
     @OnOpen
     public void onOpen(Session session) throws IOException {
@@ -161,7 +161,7 @@ public class BulletCommentWebsocketListener {
         if(Opt.SEND_SMS_REPLY == optCode){
 //            log.info("真正的弹幕消息："+content);
             try {
-                bulletCommentService.handle(content);
+                liveMsgServiceFactory.handle(content);
             } catch (Exception e) {
                 log.error("弹幕处理异常", e);
             }

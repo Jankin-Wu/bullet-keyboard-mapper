@@ -34,7 +34,7 @@ public class DelayTaskHandlerChain extends AbstractBulletResponseHandlerChain {
         try {
             scheduledQueueExecutor.addToQueue(task);
         } catch (RejectedExecutionException e) {
-            log.warn("队列已满，用户[{}]的任务[{}]被抛弃", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
+            log.warn("队列已满，用户[{}]的任务[{}]被抛弃", context.getBulletCommentRequest().getData().getUname(), context.getProcess().getProcessName());
         }
         // 插入延迟队列
 //        long delayTime = basicConfig.getDelayTime();
