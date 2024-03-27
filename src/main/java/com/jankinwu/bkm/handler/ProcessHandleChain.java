@@ -28,7 +28,7 @@ public class ProcessHandleChain extends AbstractBulletResponseHandlerChain {
         if (Objects.isNull(context.getProcess())) {
             return;
         }
-        log.info("开始处理用户[{}]的任务[{}]", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
+        log.info("开始处理用户[{}]的任务[{}]", context.getBulletCommentRequest().getData().getUname(), context.getProcess().getProcessName());
         for (Stage stage : context.getProcess().getStages()) {
             try {
                 executeStage(stage);
@@ -39,7 +39,7 @@ public class ProcessHandleChain extends AbstractBulletResponseHandlerChain {
                 log.error("stage [{}] 处理异常：{}",stage.getName(), e.getMessage());
             }
         }
-        log.info("用户[{}]的任务[{}]执行完毕", context.getRequest().getData().getUname(), context.getProcess().getProcessName());
+        log.info("用户[{}]的任务[{}]执行完毕", context.getBulletCommentRequest().getData().getUname(), context.getProcess().getProcessName());
         if (getNext() != null) {
             getNext().doChain(context);
         }
@@ -50,7 +50,7 @@ public class ProcessHandleChain extends AbstractBulletResponseHandlerChain {
         try {
             Thread.sleep(stage.getIntervalBefore());
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error("", e);
         }
 
         for (int i = 0; i < stage.getRepeatTimes(); i++) {
@@ -64,14 +64,14 @@ public class ProcessHandleChain extends AbstractBulletResponseHandlerChain {
                 try {
                     Thread.sleep(stage.getRepeatInterval());
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    log.error("", e);
                 }
             }
         }
         try {
             Thread.sleep(stage.getIntervalAfter());
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error("", e);
         }
     }
 }

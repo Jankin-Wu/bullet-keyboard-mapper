@@ -1,9 +1,6 @@
 package com.jankinwu.bkm.cache;
 
 import cn.hutool.core.util.StrUtil;
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONArray;
-import com.alibaba.fastjson2.JSONObject;
 import com.jankinwu.bkm.config.AppConfig;
 import com.jankinwu.bkm.executors.AsyncTaskExecutor;
 import com.jankinwu.bkm.pojo.domain.ProcessData;
@@ -18,7 +15,10 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -28,7 +28,6 @@ import java.util.stream.Stream;
  * @description 缓存执行流程
  * @date 2024/3/3 15:33
  */
-@Getter
 @Slf4j
 @RequiredArgsConstructor
 @Component
@@ -36,6 +35,7 @@ public class ProcessCache {
 
     private final AppConfig appConfig;
 
+    @Getter
     private Map<String, ProcessData> processMap;
 
     private final AsyncTaskExecutor executor;

@@ -1,10 +1,14 @@
-package com.jankinwu.bkm.service;
+package com.jankinwu.bkm.service.impl;
 
+import com.jankinwu.bkm.enums.LiveMsgTypeEnum;
 import com.jankinwu.bkm.handler.*;
+import com.jankinwu.bkm.pojo.dto.RequestCommonData;
 import com.jankinwu.bkm.pojo.dto.RequestProcessContext;
 import com.jankinwu.bkm.pojo.request.BulletCommentRequest;
+import com.jankinwu.bkm.service.LiveMsgService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,7 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class BulletCommentService {
+public class BulletCommentServiceImpl implements LiveMsgService {
     
     private final ProcessMappingHandlerChain processMappingHandlerChain;
 
@@ -27,15 +31,24 @@ public class BulletCommentService {
 
     private final PushMsgHandlerChain pushMsgHandlerChain;
 
-    public void handle(String content) {
+    @Override
+    public void handle(String content, RequestProcessContext context) {
         BulletCommentRequest request = BulletCommentRequest.parseRequest(content);
-        RequestProcessContext context = new RequestProcessContext(request);
-        String msg = context.getRequest().getData().getMsg();
-        log.info("[弹幕] {}: {}", context.getRequest().getData().getUname(), msg);
+        context.setBulletCommentRequest(request);
+        RequestCommonData commonData = new RequestCommonData();
+        BeanUtils.copyProperties(request, commonData);
+        context.setCommonData(commonData);
+        String msg = context.getBulletCommentRequest().getData().getMsg();
+        log.info("[弹幕] {}: {}", context.getBulletCommentRequest().getData().getUname(), msg);
         limitRateHandlerChain.setNext(processMappingHandlerChain);
         processMappingHandlerChain.setNext(delayTaskHandlerChain);
         delayTaskHandlerChain.setNext(processHandleChain);
         processHandleChain.setNext(pushMsgHandlerChain);
         limitRateHandlerChain.doChain(context);
+    }
+
+    @Override
+    public String getMsgType() {
+        return LiveMsgTypeEnum.BULLET_COMMENT.getType();
     }
 }
