@@ -1,7 +1,7 @@
 package com.jankinwu.bkm.pojo.dto;
 
 import com.jankinwu.bkm.pojo.domain.ProcessData;
-import com.jankinwu.bkm.pojo.request.BulletCommentRequest;
+import com.jankinwu.bkm.pojo.receive.BulletCommentReceive;
 import lombok.Data;
 
 /**
@@ -12,13 +12,13 @@ import lombok.Data;
 @Data
 public class RequestProcessContext {
 
-    private BulletCommentRequest bulletCommentRequest;
+    private BulletCommentReceive bulletCommentReceive;
     private RequestCommonData commonData;
     private ProcessData process;
     private String type;
 
-    public RequestProcessContext(BulletCommentRequest bulletCommentRequest) {
-        this.bulletCommentRequest = bulletCommentRequest;
+    public RequestProcessContext(BulletCommentReceive bulletCommentReceive) {
+        this.bulletCommentReceive = bulletCommentReceive;
     }
 
     public RequestProcessContext(String type) {

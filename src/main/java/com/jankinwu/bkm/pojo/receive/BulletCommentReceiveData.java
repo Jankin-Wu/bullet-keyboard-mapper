@@ -1,14 +1,14 @@
-package com.jankinwu.bkm.pojo.request;
+package com.jankinwu.bkm.pojo.receive;
 
 import lombok.Data;
 
 /**
  * @author jankinwu
- * @description
+ * @description 接收直播弹幕推送消息体中data实体类
  * @date 2024/3/3 21:33
  */
 @Data
-public class BulletCommentRequestData {
+public class BulletCommentReceiveData {
 
     private String emojiImgUrl;
     private int fansMedalLevel;

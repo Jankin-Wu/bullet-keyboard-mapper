@@ -52,7 +52,7 @@ public class PushMsgHandlerChain extends AbstractBulletResponseHandlerChain {
         if (StringUtils.isNotBlank(appConfig.getExecutionFormatString())) {
             msg = StringUtils.replacePlaceholders(appConfig.getExecutionFormatString(), paramMap);
         } else {
-            msg = "[" + context.getBulletCommentRequest().getData().getUname() + "]" + "执行操作：" + context.getProcess().getProcessName();
+            msg = "[" + context.getBulletCommentReceive().getData().getUname() + "]" + "执行操作：" + context.getProcess().getProcessName();
         }
         PushMsgDTO dto = new PushMsgDTO();
         dto.setFill(pushMsgConfig.getFill());
@@ -61,13 +61,13 @@ public class PushMsgHandlerChain extends AbstractBulletResponseHandlerChain {
         dto.setFontSize(pushMsgConfig.getFontSize());
         dto.setText(msg);
         dto.setType(pushMsgConfig.getType());
-        dto.setAvatarUrl(context.getBulletCommentRequest().getData().getUface());
+        dto.setAvatarUrl(context.getBulletCommentReceive().getData().getUface());
         return dto;
     }
 
     private Map<String, String> assembleMap(RequestProcessContext context) {
         Map<String, String> map = new HashMap<>();
-        map.put("uname", context.getBulletCommentRequest().getData().getUname());
+        map.put("uname", context.getBulletCommentReceive().getData().getUname());
         map.put("processName", context.getProcess().getProcessName());
         return map;
     }
