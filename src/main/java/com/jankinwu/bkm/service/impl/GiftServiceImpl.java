@@ -6,7 +6,7 @@ import com.jankinwu.bkm.enums.LiveMsgTypeEnum;
 import com.jankinwu.bkm.handler.*;
 import com.jankinwu.bkm.pojo.dto.RequestCommonData;
 import com.jankinwu.bkm.pojo.dto.RequestProcessContext;
-import com.jankinwu.bkm.pojo.request.GiftRequest;
+import com.jankinwu.bkm.pojo.receive.GiftReceive;
 import com.jankinwu.bkm.service.LiveMsgService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,19 +34,19 @@ public class GiftServiceImpl implements LiveMsgService {
     @Override
     public void handle(String content, RequestProcessContext context) {
         ObjectMapper objectMapper = new ObjectMapper();
-        GiftRequest giftRequest;
+        GiftReceive giftReceive;
         try {
-            giftRequest = objectMapper.readValue(content, GiftRequest.class);
+            giftReceive = objectMapper.readValue(content, GiftReceive.class);
         } catch (JsonProcessingException e) {
             log.error("Json 解析异常：", e);
             return;
         }
         RequestCommonData commonData = new RequestCommonData();
-        BeanUtils.copyProperties(giftRequest, commonData);
-        commonData.setMsg(giftRequest.getData().getGiftName());
+        BeanUtils.copyProperties(giftReceive, commonData);
+        commonData.setMsg(giftReceive.getData().getGiftName());
         context.setCommonData(commonData);
-        String msg = context.getBulletCommentRequest().getData().getMsg();
-        log.info("[礼物] {}: {}", context.getBulletCommentRequest().getData().getUname(), msg);
+        String msg = context.getBulletCommentReceive().getData().getMsg();
+        log.info("[礼物] {}: {}", context.getBulletCommentReceive().getData().getUname(), msg);
         processMappingHandlerChain.setNext(delayTaskHandlerChain);
         delayTaskHandlerChain.setNext(processHandleChain);
         processHandleChain.setNext(pushMsgHandlerChain);

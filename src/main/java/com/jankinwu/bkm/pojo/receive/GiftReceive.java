@@ -1,4 +1,4 @@
-package com.jankinwu.bkm.pojo.request;
+package com.jankinwu.bkm.pojo.receive;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -10,18 +10,18 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author jankinwu
- * @description
+ * @description 接收直播礼物消息推送实体类
  * @date 2024/3/26 16:27
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(builderClassName = "GiftRequestBuilder", builderMethodName = "giftRequestBuilder")
-@JsonDeserialize(builder = GiftRequest.GiftRequestBuilder.class)
-public class GiftRequest {
+@JsonDeserialize(builder = GiftReceive.GiftRequestBuilder.class)
+public class GiftReceive {
 
     @JsonProperty("data")
-    private GiftRequestData data;
+    private GiftReceiveData data;
 
     @JsonProperty("cmd")
     private String cmd;

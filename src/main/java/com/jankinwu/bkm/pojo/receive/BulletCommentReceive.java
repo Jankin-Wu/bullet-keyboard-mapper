@@ -1,4 +1,4 @@
-package com.jankinwu.bkm.pojo.request;
+package com.jankinwu.bkm.pojo.receive;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
@@ -6,13 +6,13 @@ import lombok.Data;
 
 /**
  * @author jankinwu
- * @description 弹幕请求体
+ * @description 接收直播弹幕推送实体类
  * @date 2024/3/3 2:40
  */
 @Data
-public class BulletCommentRequest {
+public class BulletCommentReceive {
 
-    private BulletCommentRequestData data;
+    private BulletCommentReceiveData data;
     private String cmd;
 
     /**
@@ -20,11 +20,11 @@ public class BulletCommentRequest {
      * @param content 弹幕消息
      * @return BulletCommentRequest
      */
-    public static BulletCommentRequest parseRequest(String content) {
+    public static BulletCommentReceive parseRequest(String content) {
         JSONObject jsonObject = JSON.parseObject(content);
-        BulletCommentRequest request = new BulletCommentRequest();
+        BulletCommentReceive request = new BulletCommentReceive();
         JSONObject dataObject = jsonObject.getJSONObject("data");
-        BulletCommentRequestData data = new BulletCommentRequestData();
+        BulletCommentReceiveData data = new BulletCommentReceiveData();
         data.setEmojiImgUrl(dataObject.getString("emoji_img_url"));
         data.setFansMedalLevel(dataObject.getIntValue("fans_medal_level"));
         data.setFansMedalName(dataObject.getString("fans_medal_name"));

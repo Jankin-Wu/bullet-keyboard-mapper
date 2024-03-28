@@ -4,7 +4,7 @@ import com.jankinwu.bkm.enums.LiveMsgTypeEnum;
 import com.jankinwu.bkm.handler.*;
 import com.jankinwu.bkm.pojo.dto.RequestCommonData;
 import com.jankinwu.bkm.pojo.dto.RequestProcessContext;
-import com.jankinwu.bkm.pojo.request.BulletCommentRequest;
+import com.jankinwu.bkm.pojo.receive.BulletCommentReceive;
 import com.jankinwu.bkm.service.LiveMsgService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,13 +33,13 @@ public class BulletCommentServiceImpl implements LiveMsgService {
 
     @Override
     public void handle(String content, RequestProcessContext context) {
-        BulletCommentRequest request = BulletCommentRequest.parseRequest(content);
-        context.setBulletCommentRequest(request);
+        BulletCommentReceive request = BulletCommentReceive.parseRequest(content);
+        context.setBulletCommentReceive(request);
         RequestCommonData commonData = new RequestCommonData();
         BeanUtils.copyProperties(request.getData(), commonData);
         context.setCommonData(commonData);
-        String msg = context.getBulletCommentRequest().getData().getMsg();
-        log.info("[弹幕] {}: {}", context.getBulletCommentRequest().getData().getUname(), msg);
+        String msg = context.getBulletCommentReceive().getData().getMsg();
+        log.info("[弹幕] {}: {}", context.getBulletCommentReceive().getData().getUname(), msg);
         limitRateHandlerChain.setNext(processMappingHandlerChain);
         processMappingHandlerChain.setNext(delayTaskHandlerChain);
         delayTaskHandlerChain.setNext(processHandleChain);

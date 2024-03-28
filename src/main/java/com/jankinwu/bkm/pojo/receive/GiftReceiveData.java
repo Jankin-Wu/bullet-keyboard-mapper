@@ -1,4 +1,4 @@
-package com.jankinwu.bkm.pojo.request;
+package com.jankinwu.bkm.pojo.receive;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -11,16 +11,16 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author jankinwu
- * @description
+ * @description 接收直播礼物消息推送消息体中 data 实体类
  * @date 2024/3/26 16:29
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(builderClassName = "GiftRequestDataBuilder", builderMethodName = "giftRequestDataBuilder")
-@JsonDeserialize(builder = GiftRequestData.GiftRequestDataBuilder.class)
+@JsonDeserialize(builder = GiftReceiveData.GiftRequestDataBuilder.class)
 @JsonSerialize
-public class GiftRequestData {
+public class GiftReceiveData {
     private int uid;
     private String uname;
     private String uface;
@@ -75,7 +75,7 @@ public class GiftRequestData {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder(builderClassName = "AnchorInfoBuilder", builderMethodName = "anchorInfoBuilder")
-    @JsonDeserialize(builder = GiftRequestData.AnchorInfo.AnchorInfoBuilder.class)
+    @JsonDeserialize(builder = GiftReceiveData.AnchorInfo.AnchorInfoBuilder.class)
     public static class AnchorInfo {
         private String uface;
         private int uid;
@@ -93,7 +93,7 @@ public class GiftRequestData {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder(builderClassName = "ComboInfoBuilder", builderMethodName = "comboInfoBuilder")
-    @JsonDeserialize(builder = GiftRequestData.ComboInfo.ComboInfoBuilder.class)
+    @JsonDeserialize(builder = GiftReceiveData.ComboInfo.ComboInfoBuilder.class)
     public static class ComboInfo {
 
         @JsonProperty("combo_base_num")
